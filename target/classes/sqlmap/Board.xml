@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.board">
+
+<select id="selectBoardList" parameterType="Board" resultType="Board">
+	select
+		b.board_no,
+		b.category_no,
+		b.board_name,
+		b.board_title,
+		b.board_content,
+		b.board_complete,
+		b.board_regdate,
+		b.board_flag,
+		b.member_no,
+		m.member_id
+	from
+		board b,
+		member m
+	where
+		b.member_no = m.member_no
+</select>
+
+</mapper>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<typeAliases>
+		<typeAlias alias="Admin" type="com.project.model.Admin" />
+		<typeAlias alias="Board" type="com.project.model.Board" />
+		<typeAlias alias="Category" type="com.project.model.Category" />
+		<typeAlias alias="File" type="com.project.model.File" />
+		<typeAlias alias="Member" type="com.project.model.Member" />
+		<typeAlias alias="Menu" type="com.project.model.Menu" />
+		<typeAlias alias="Stop" type="com.project.model.Stop" />
+		<typeAlias alias="Users" type="com.project.model.Users" />
+	</typeAliases>
+
+</configuration>
+
+
+
+
+
+
