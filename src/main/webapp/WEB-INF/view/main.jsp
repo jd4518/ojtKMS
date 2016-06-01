@@ -1,35 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" session="false" trimDirectiveWhitespaces="true"%>
-<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
-
-<html lang="ko" >
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ko" data-ng-app="projectApp">
 <head>
-<%@ include file="include/common.jsp" %>
-<meta http-equiv="X-UA-Content-Type" content="text/html; charset=UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<%@ include file="include/common.jsp" %>
 
-  <!-- Bootstrap Core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- <script type="text/javascript"> -->
+<!--  var app = angular.module("projectApp", []); -->
 
-    <!-- Custom CSS -->
-    <link href="css/landing-page.css" rel="stylesheet">
+<!--  app.controller("mainCtrl", function($scope) { -->
+<!--      $scope.name = "John"; -->
+<!--  }); -->
 
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-
-
+<!-- </script> -->
 <title>Main.jsp</title>
-</head>
-<body>
+<script type="text/javascript">
 
-<!-- Navigation -->
+var app = angular.module("travelerApp", ['ngRoute']);
+	app.config(['$routeProvider'],function($routeProvider) {
+		console.log("/insert config...")
+		
+				$routeProvider.when('/join', {				
+				templateUrl: "join.do",				
+				controller: "mainCtrl"			
+			});
+	});
+app.controller("mainCtrl", function($scope, $http, $location) {
+	
+	console.log("mainController...");
+});
+
+</script>
+</head>
+<body data-ng-controller="mainCtrl">
+
+    <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
         <div class="container topnav">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -40,19 +47,17 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand topnav" href="#">Start Bootstrap</a>
+                <a class="navbar-brand topnav" href="main.do">It Information Broadcast</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="#about">About</a>
                     </li>
                     <li>
-                        <a href="#services">Services</a>
+                        <a href="member/login.do">Login</a>
                     </li>
                     <li>
-                        <a href="#contact">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -70,30 +75,48 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-message">
-                        <h1>Landing Page</h1>
-                        <h3>A Template by Start Bootstrap</h3>
+                        <h1>It Information Broadcast</h1>
+                        <h3>K M System</h3>
                         <hr class="intro-divider">
-                        <ul class="list-inline intro-social-buttons">
-                            <li>
-                                <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-                            </li>
-                            <li>
-                                <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
-                            </li>
-                        </ul>
+                        <div id="align">
+                        <div id="content">
+           <form class="form-horizontal" role="form" action="member/join.do" method="post" >
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="id">ID:</label>
+    <div class="col-sm-10">
+      <input type="text" name="memberId" class="form-control" id="id" placeholder="Enter id">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="email">Email:</label>
+    <div class="col-sm-10"> 
+     <input type="email" data-ng-model="name" name="memberEmail" class="form-control" id="email" placeholder="Enter email">
+    </div>
+  </div>
+  <div class="form-group"> 
+    <div class="col-sm-offset-2 col-sm-10">
+<!--       <div class="checkbox"> -->
+<!--         <label><input type="checkbox"> Remember me</label> -->
+<!--       </div> -->
+    </div>
+  </div>
+  <div class="form-group"> 
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-lg btn-primary btn-block">Sign Up</button>
+      <a href="#/join">angular 라우터 테스트</a>
+    </div>
+  </div>
+</form>
+</div>
+</div>
                     </div>
                 </div>
             </div>
 
         </div>
-        <!-- /.container -->
 
     </div>
 
-
-
 </body>
+
 </html>

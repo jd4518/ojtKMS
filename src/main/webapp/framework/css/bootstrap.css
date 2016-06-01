@@ -6757,4 +6757,16 @@ button.close {
     display: none !important;
   }
 }
+ #align {  
+        width:90%;  
+               height:100px;
+        text-align:center;  
+   }  
+   
+      #content {  
+        margin:0 auto;
+        width:750px;
+        height:100px;
+        text-align:left;  
+    }
 /*# sourceMappingURL=bootstrap.css.map */

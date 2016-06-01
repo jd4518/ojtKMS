@@ -21,20 +21,17 @@
 
 <mvc:default-servlet-handler/>
 
-<context:component-scan base-package="com.project.*"/>
+<context:component-scan base-package="com.*"/>
 
 <mvc:annotation-driven/>
 
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-	        <!-- Example: a logical view name of 'showMessage' is mapped to '/WEB-INF/jsp/showMessage.jsp' -->
-	        <property name="prefix" value="/WEB-INF/"/>
-	        <property name="suffix" value=".jsp"/>
-	</bean>
+<mvc:view-resolvers>
+	<mvc:jsp prefix="/WEB-INF/view/" suffix=".jsp"/>
+</mvc:view-resolvers>
 
-<mvc:view-controller path="/index.html" view-name="index"/>
-
-  <mvc:resources location="/WEB-INF/css/" mapping="/css/**" cache-period="0"/>
-   <mvc:resources location="/WEB-INF/js/" mapping="/js/**" cache-period="0"/>
-   <mvc:resources location="/WEB-INF/img/" mapping="/img/**" cache-period="0"/>
-   <mvc:resources location="/WEB-INF/font-awesome/" mapping="/font-awesome/**" cache-period="0"/>
+<mvc:view-controller path="/index.jsp" view-name="index"/>
+	<mvc:resources location="/framework/css/" mapping="/css/**" cache-period="0"/>
+   <mvc:resources location="/framework/img/" mapping="/img/**" cache-period="0"/>
+   <mvc:resources location="/framework/font-awesome/" mapping="/font-awesome/css/**" cache-period="0"/>
+   <mvc:resources location="/js/" mapping="/js/**" cache-period="0"/>
 </beans>

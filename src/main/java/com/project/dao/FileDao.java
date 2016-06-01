@@ -9,4 +9,5 @@ public class FileDao {
 
 	@Autowired
 	private SqlSessionTemplate sqlSession;
+	
 }

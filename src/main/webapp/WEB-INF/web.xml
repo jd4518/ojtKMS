@@ -76,4 +76,12 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	    <servlet-name>springDispatcherServlet</servlet-name>
 	    <url-pattern>*.do</url-pattern>
 	  </servlet-mapping>
+	  
+	  <listener>
+   <listener-class>
+      org.springframework.web.context.ContextLoaderListener
+   </listener-class>
+</listener>
+
+
 </web-app>

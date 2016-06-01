@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.member">
+
+<insert id="memberAdd" parameterType="com.project.model.Member">
+insert into member(
+	member_name,
+	member_id,
+	member_password,
+	member_email
+)
+values
+(
+	#{memberName, jdbcType=VARCHAR}
+	#{memberId, jdbcType=VARCHAR}
+	#{memberPassword, jdbcType=VARCHAR}
+	#{memberEmail, jdbcType=VARCHAR}
+)
+
+</insert>
+
+</mapper>

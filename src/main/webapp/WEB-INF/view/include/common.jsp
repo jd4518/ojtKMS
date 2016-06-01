@@ -1,21 +1,43 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" session="false" trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!-- angularJs -->
-
-
-
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script> 
+ <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-animate.min.js"></script> 
+ <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-cookies.min.js"></script> 
+ <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-resource.min.js"></script> 
+ <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script> 
+ <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-sanitize.min.js"></script> 
+ <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-touch.min.js"></script>
 <!-- cdn -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
+<script src='http://codepen.io/andytran/pen/vLmRVp.js'></script>
+<link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css"> 
 <!-- CSS -->
-<c:url var="bootstrap_css"					value="/css/bootstrap.min.css"/>
-<c:url var="font_awesome_css"				value="/font-awesome/css/font-awesome.css"/>
+<c:url var="bootstrap_css"					value="/framework/css/bootstrap.css"/>
+<c:url var="bootstrap_min_css"					value="/framework/css/bootstrap.min.css"/>
+<c:url var="landing_page_css"				value="/framework/css/landing-page.css"/>
+<c:url var="font_awesome_css"				value="/framework/font-awesome/css/font-awesome.css"/>
+<c:url var="reset_css"					value="/framework/css/reset.css"/>
+<c:url var="style_css"					value="/framework/css/style.css"/>
 
 <link rel="stylesheet" href="${bootstrap_css}"/>
+<link rel="stylesheet" href="${bootstrap_min_css}"/>
+<link rel="stylesheet" href="${landing_page_css}"/>
 <link rel="stylesheet" href="${font_awesome_css}"/>
+<link rel="stylesheet" href="${reset_css}"/>
+<link rel="stylesheet" href="${style_css}"/>
 
 
 <!-- JavaScripte -->
-<c:url var="bootstrap_js"               value="/js/bootstrap.js"/>
+<c:url var="bootstrap_js"               value="/framework/js/bootstrap.js"/>
+<c:url var="jquery_js"               value="/framework/js/jquery.js"/>
 <!-- URL경로 설정 -->
 
 <script type="text/javascript" src="${bootstrap_js}"></script>
+<script type="text/javascript" src="${jquery_js}"></script>

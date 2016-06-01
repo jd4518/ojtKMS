@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
+@RequestMapping(value="/")
 public class MainController {
 	static Log log = LogFactory.getLog(MainController.class);
 	
 	@RequestMapping(value="/main.do")
-	public String getMainView(){
+	public void getMainView(){
 		
 		log.info("getMainVew()..");
-		return "index";
 	}
 	
 }
