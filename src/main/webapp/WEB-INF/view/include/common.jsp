@@ -12,7 +12,8 @@
  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-animate.min.js"></script> 
  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-cookies.min.js"></script> 
  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-resource.min.js"></script> 
- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script> 
+ <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>
+ <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.js"></script> 
  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-sanitize.min.js"></script> 
  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-touch.min.js"></script>
 <!-- cdn -->
@@ -37,7 +38,9 @@
 <!-- JavaScripte -->
 <c:url var="bootstrap_js"               value="/framework/js/bootstrap.js"/>
 <c:url var="jquery_js"               value="/framework/js/jquery.js"/>
+<c:url var="joinController_js"  value="/js/joinController.js"/>
 <!-- URL경로 설정 -->
 
+<script type="text/javascript" src="${joinController_js}"></script>
 <script type="text/javascript" src="${bootstrap_js}"></script>
 <script type="text/javascript" src="${jquery_js}"></script>

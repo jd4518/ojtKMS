@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Login</title>
 <script type="text/javascript" src="/Project/js/test.js"></script>
-<%@ include file="../include/common.jsp" %>
+<%@ include file="/WEB-INF/view/include/common.jsp" %>
 	
 </head>
 <body>
