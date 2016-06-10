@@ -15,18 +15,16 @@ public class MemberAddService {
 	@Autowired
 	private MemberDao memberDao;
 	
-	public int add(Member member){
-		int result = 0;
+	public void add(Member member){
 		try{
 			
-			result = memberDao.memberAdd(member);
+			memberDao.memberAdd(member);
 			
 		}
 		catch(Exception e){
 			log.error(e);
 		}
 		
-		return result;
 	}
 	
 	

@@ -13,7 +13,7 @@ import com.project.model.Member;
 import com.project.service.MemberAddService;
 
 @Controller
-@RequestMapping(value="member/")
+@RequestMapping(value="/member")
 public class MemberController {
 	
 	static Log log = LogFactory.getLog(MemberController.class);
@@ -37,12 +37,14 @@ public class MemberController {
 		
 		return "member/login";
 	}
-	@RequestMapping(value={"","/"}, method=RequestMethod.POST)
+	
+	
+	@RequestMapping(value="/member.do",method=RequestMethod.POST)
 	@ResponseBody
-	public int memberAdd(@RequestBody Member member){
+	public void memberAdd(@RequestBody Member member){
+		System.out.println("ggggg");
 		
-		int result = memberAddService.add(member);
+		memberAddService.add(member);
 		
-		return result;
 	}
 }

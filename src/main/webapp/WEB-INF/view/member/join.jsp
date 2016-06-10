@@ -24,15 +24,19 @@
 				<form class="form-horizontal" novalidate="novalidate"
 					data-ng-submit="submit()">
 					<input type="text" data-ng-model="join.memberId" name="memberId"
-						placeholder="Id" value="${param.memberId}" /> <input type="email"
+						placeholder="Id" value="${param.memberId}" /> 
+					<input type="email"
 						data-ng-model="join.memberEmail" name="memberEmail"
-						placeholder="Email Address" value="${param.memberEmail}" /> <input
+						placeholder="Email Address" value="${param.memberEmail}" />
+					<input
 						type="text" data-ng-model="join.memberName" name="memberName"
 						data-ng-model="name" placeholder="Name" /> {{name}}
-					{{join.memberId}} <input type="password"
+					{{join.memberId}} 
+					<input type="password"
 						data-ng-model="join.memberPassword" name="memberPassword"
-						placeholder="Password" /> <input type="submit" value="회원가입" />
-					<button type="button" onclick="cl()">가입취소</button>
+						placeholder="Password" />
+						 <input type="submit" value="회원가입" />
+					<button type="button" data-ng-click="cl()">가입취소</button>
 				</form>
 			</div>
 		</div>

@@ -11,6 +11,7 @@ public class Member {
 	private int memberReportpoint;
 	private int memberStopPoint;
 	private String memberFlag;
+	
 	public int getMemberNo() {
 		return memberNo;
 	}

@@ -5,40 +5,13 @@
 <head>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<%@ include file="/WEB-INF/view/include/common.jsp"%>
+
 
 <title>Main.jsp</title>
 </head>
 <body>
 
-	<!-- Navigation -->
-	<nav class="navbar navbar-default navbar-fixed-top topnav"
-		role="navigation">
-		<div class="container topnav">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand topnav" href="main.do">It Information
-					Broadcast</a>
-			</div>
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse"
-				id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav navbar-right">
-					<li></li>
-					<li><a href="member/memberMain.do#login">Login</a></li>
-					<li></li>
-				</ul>
-			</div>
-			<!-- /.navbar-collapse -->
-		</div>
-		<!-- /.container -->
-	</nav>
+	
 
 
 	<!-- Header -->
@@ -49,8 +22,8 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="intro-message">
-						<h1>It Information Broadcast</h1>
-						<h3>K M System</h3>
+						<h1>Broadcast IT</h1>
+						<h3>BIT</h3>
 						<hr class="intro-divider">
 						<div id="align">
 							<div id="content">

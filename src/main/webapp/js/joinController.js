@@ -1,41 +1,37 @@
 
-var app = angular.module("projectApp", [ 'ngRoute' ]);
-
 app.config(function($routeProvider) {
-	$routeProvider.when("/join", {
-		templeteUrl : "join.do",
-		cotroller : "joinCtrl"
+	$routeProvider.when('/join', {
+		templateUrl : 'join.do',
+		controller : 'joinCtrl'
 	}).otherwise({
-		redirectTo : "/join"
+		redirectTo : '/join'
 	});
 });
 
 app.controller('joinCtrl', function($scope, $http, $location) {
-	console.log("recommandListController...");
-	$scope.name = "hihi";
+	$scope.name = "fihi";
 	$scope.join = {};
 	$scope.join.memberId = "hihi";
-	// $scope.cl = function(){
-	//		
-	// alert("잘만되네?");
-	// }
-	//	
-	//	
-	//	
-	// $scope.submit = function(){
-	// var ajax = $http.post({
-	// memberId : $scope.join.memberId,
-	// memberEmail : $scope.join.memberEmail,
-	// memberName : $scope.join.memberName,
-	// memberPassword : $scope.join.memberPassword
-	// });
-	//		
-	// ajax.then(function(value){
-	// $location.path("main.do");
-	// }, function(reason){
-	// $scope.join = reason.data;
-	// alert("에러");
-	// });
-	// }
+
+	$scope.cl = function() {
+		alert($location.path());
+		location.href = "/Project/main.do";
+	}
+
+	$scope.submit = function() {
+		var ajax = $http.post("/Project/member/member.do", {
+			memberId : $scope.join.memberId,
+			memberEmail : $scope.join.memberEmail,
+			memberName : $scope.join.memberName,
+			memberPassword : $scope.join.memberPassword
+		});
+		ajax.then(function(value) {
+			location.href = "/Project/board/boardMain.do";
+		}, function(reason) {
+			$scope.join = reason.data;
+			alert("error");
+			location.href = "/Project/main.do";
+		});
+	}
 
 });

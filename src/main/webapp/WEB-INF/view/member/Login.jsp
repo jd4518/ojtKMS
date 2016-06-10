@@ -11,7 +11,7 @@
 <body>
 <article class="container">
    <div class="pen-title">
-  <h1> 로그인 <small><span> <i class='fa fa-paint-brush'></i></span></small></h1>
+  <h1>Login <small><span> <i class='fa fa-paint-brush'></i></span></small></h1>
 </div>
 <!-- Form Module-->
 <div class="module form-module">

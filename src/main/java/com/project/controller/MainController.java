@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-@RequestMapping(value="/")
 public class MainController {
 	static Log log = LogFactory.getLog(MainController.class);
 	

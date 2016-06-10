@@ -3,11 +3,10 @@
          xmlns="http://java.sun.com/xml/ns/javaee"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-         id="WebApp_ID" version="2.5">
+      id="WebApp_ID" version="2.5">
 
-    <display-name>Project</display-name>
-    
-    <welcome-file-list>
+   <display-name>Project</display-name>
+   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
     <welcome-file>index.jsp</welcome-file>
@@ -16,9 +15,18 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
-  <session-config>
-  	<session-timeout>30</session-timeout>
-  </session-config>
+	  <filter>
+    <filter-name>sitemesh</filter-name>
+    <filter-class>org.sitemesh.config.ConfigurableSiteMeshFilter</filter-class>
+    <init-param>
+      <param-name>configFile</param-name>
+      <param-value>/WEB-INF/sitemesh3.xml</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>sitemesh</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
   
   <filter>
   	<filter-name>encoding</filter-name>

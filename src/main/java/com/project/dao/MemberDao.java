@@ -12,9 +12,9 @@ public class MemberDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	public int memberAdd(Member member){
+	public void memberAdd(Member member){
 		
 		
-		return sqlSession.insert("com.project.member.memberAdd");
+		sqlSession.insert("com.project.member.memberAdd", member);
 	}
 }

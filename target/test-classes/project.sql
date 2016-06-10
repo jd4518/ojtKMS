@@ -32,6 +32,7 @@ create sequence seq_stop_stop_no
 create table board(
 	board_no 		number(22) 		not null,
 	category_no		number(22) 		not null,
+	menu_no 		number(22)		 not null,
 	board_name		varchar2(22) 	not null,
 	board_title 	varchar2(50) 	not null,
 	board_content 	varchar2(1500) 	not null,
@@ -39,7 +40,7 @@ create table board(
 	board_regdate 	date 			default sysdate not null,
 	board_flag 		varchar2(10) 	default 'Y' not null,
 	member_no  	 	number(22) 		not null,
-	constraint pk_board_board_no primary key(board_no,category_no),
+	constraint pk_board_board_no primary key(board_no,category_no,menu_no),
 	constraint board_member_no foreign key(member_no) references member(member_no) on delete cascade
 )
 alter table accuser add menu_no number(22) not null
@@ -53,19 +54,21 @@ create table menu(
 create sequence seq_menu_menu_no
 
 create table category(
-	category_no 	number(22) 		primary key not null,
+	category_no 	number(22) 		not null,
 	category_name 	varchar2(50) 	not null,
 	menu_no 		number(22) 		not null,
+	constraint pk_category_category_no primary key(category_no,menu_no),
 	constraint	category_menu_no foreign key(menu_no) references menu(menu_no) on delete cascade
 )
 create sequence seq_category_category_no
 
 create table files(
-	files_no 		number(22) primary key not null,
-	files_realname 	varchar2(200) not null,
-	files_fakename 	varchar2(200) not null,
-	board_no 		number(22) not null,
-	cateogory_no	number(22) not null
+	files_no 		number(22)     primary key not null,
+	menu_no 		number(22)		not null,
+	files_realname 	varchar2(200) 	not null,
+	files_fakename 	varchar2(200) 	not null,
+	board_no 		number(22) 		not null,
+	category_no	number(22)		 not null
 )
 alter table files add constraint fk_files_board foreign key (board_no,category_no,menu_no) 
 			references board(board_no,category_no,menu_no) on delete cascade
@@ -75,7 +78,8 @@ create table reply(
 	reply_no 		number(22) 		primary key not null,
 	reply_content 	varchar2(150) 	not null,
 	board_no 		number(22) 		not null,
-	category_no 	number(22) 		not null
+	category_no 	number(22) 		not null,
+	menu_no 		number(22)		not null
 )
 alter table reply drop constraint fk_reply_board
 alter table reply add constraint fk_reply_board foreign key (board_no,category_no,menu_no)
@@ -87,6 +91,7 @@ create table accuser(
 	accuser_content		varchar2(1500) not null,
 	board_no			number(22),
 	category_no			number(22),
+	menu_no 		    number(22),
 	stop_no				number(22),
 	member_no			number(22),
 	user_no				number(22),

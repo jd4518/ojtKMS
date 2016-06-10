@@ -5,6 +5,7 @@
 
 <insert id="memberAdd" parameterType="com.project.model.Member">
 insert into member(
+	member_no,
 	member_name,
 	member_id,
 	member_password,
@@ -12,9 +13,10 @@ insert into member(
 )
 values
 (
-	#{memberName, jdbcType=VARCHAR}
-	#{memberId, jdbcType=VARCHAR}
-	#{memberPassword, jdbcType=VARCHAR}
+	seq_member_member_no.nextval,
+	#{memberName, jdbcType=VARCHAR},
+	#{memberId, jdbcType=VARCHAR},
+	#{memberPassword, jdbcType=VARCHAR},
 	#{memberEmail, jdbcType=VARCHAR}
 )
 

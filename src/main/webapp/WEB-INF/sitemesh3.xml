@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+   <mapping  path="/main.*" decorator="/decorators/topMenu.jsp"/>
+   <mapping  path="/member/memberMain.*" decorator="/decorators/topMenu.jsp"/>
+   <mapping  path="/board/boardMain.*" decorator="/decorators/topMenu.jsp"/>
+   
+   </sitemesh>
