@@ -54,7 +54,7 @@ setInterval("displaytime()", 1000)
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/Project/main.do"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Mhome</a></li>
-				<li><a href="/Project/board/boardMain.do"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Bhome </a></li>
+				<li><a href="/Project/board/boardMain.do#/bMain"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Bhome </a></li>
              	<li><a href="#"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</a></li>
                 <li><a href="/Project/member/memberMain.do#/login"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Log In</a></li>
             </ul>
@@ -94,20 +94,25 @@ setInterval("displaytime()", 1000)
                     <a href="/Project/main.do"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Mhome</a>
                 </li>
                   <li>
-                    <a href="/Project/board/boardMain.do"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Bhome</a>
+                    <a href="/Project/board/boardMain.do#/bMain"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Bhome</a>
+                </li>
+                <li data-ng-repeat="x in menu">
+                    <a  data-ng-mouseover="mOver({{x.MENU_NO}})"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>{{x.MENU_NAME}}</a>
+                    <div class="glyphicon glyphicon-home" data-ng-show="no">zzz{{no}}</div>
                 </li>
                 <li>
-                    <a href="#"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> notice</a>
+                <a herf="#" data-ng-mouseover="mOver()">zzz{{no}}</a>
+                <div class="glyphicon glyphicon-home" data-ng-show="no"></div>
                 </li>
-                <li>
-                    <a href="#"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> IT</a>
+             <!--    <li>
+                    <a href="#"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Programming</a>
                 </li>
                 <li>
                     <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Q & A</a>
                 </li>
               	<li>
                     <a href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Messages</a>
-                </li>
+                </li> -->
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->

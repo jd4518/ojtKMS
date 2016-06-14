@@ -12,7 +12,12 @@
 
 </head>
 <body>
-
-
+<div class="bcb">
+<div class="container">
+<div class="tm">
+<div data-ng-view></div>
+</div>
+</div>
+</div>
 </body>
 </html>

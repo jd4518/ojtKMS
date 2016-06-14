@@ -6904,4 +6904,86 @@ button.close {
         margin-right: 0;
     }
 }
+.qsz-orange {
+    display: inline-block;
+    border: 1px solid #F90;
+    background: #222;
+    width: 100%;
+}
+.qsz-title-orange {
+    padding: 10px 15px;
+    background: #F90;
+    font-weight: 700;
+    color: #eee;
+}
+.en {
+    font-family: 'Nanum Gothic', sans-serif;
+    letter-spacing: -.2px!important;
+}
+.font-16, i.font-16 {
+    font-size: 16px;
+}
+.widget-box {
+    margin: 10px;
+}
+.img-wrap {
+    display: block;
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 56.25%;
+}
+.img-wrap .img-item {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.flexslider {
+    margin: 0;
+    background: none;
+    border: 0;
+    position: relative;
+    zoom: 1;
+}
+.tm{
+	margin-top:100px;
+	margin-left:85px;
+}
+
+.bcb{
+	background-color: black;
+	width:100%;
+	height:100%;
+	
+}
+.pull-right {
+    float: right!important;
+}
+.lightgray, i.lightgray {
+    color: #ddd;
+}
+.qsz-title-orange > a:link, a:visited {
+    color: #EEE;
+    text-decoration: none;
+}
+.qsz-title-orange > a:link, a:visited {
+    color: #000;
+    text-decoration: none;
+}
+.qsz-title-orange > a {
+    color: rgb(51, 51, 51);
+    cursor: pointer;
+    text-decoration: none;
+}
+.qsz-title-orange > a {
+    color: #428bca;
+    text-decoration: none;
+}
+.qsz-title-orange > a {
+    background: transparent;
+}
 /*# sourceMappingURL=bootstrap.css.map */

@@ -16,5 +16,6 @@ public class MemberDao {
 		
 		
 		sqlSession.insert("com.project.member.memberAdd", member);
+		
 	}
 }

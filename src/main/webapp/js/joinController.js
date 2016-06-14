@@ -3,8 +3,6 @@ app.config(function($routeProvider) {
 	$routeProvider.when('/join', {
 		templateUrl : 'join.do',
 		controller : 'joinCtrl'
-	}).otherwise({
-		redirectTo : '/join'
 	});
 });
 
@@ -26,7 +24,7 @@ app.controller('joinCtrl', function($scope, $http, $location) {
 			memberPassword : $scope.join.memberPassword
 		});
 		ajax.then(function(value) {
-			location.href = "/Project/board/boardMain.do";
+			location.href = "/Project/board/boardMain.do#/bMain";
 		}, function(reason) {
 			$scope.join = reason.data;
 			alert("error");

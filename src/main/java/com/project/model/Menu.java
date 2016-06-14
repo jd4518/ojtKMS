@@ -3,6 +3,7 @@ package com.project.model;
 public class Menu {
 	private int menuNo;
 	private String menuName;
+	
 	public int getMenuNo() {
 		return menuNo;
 	}

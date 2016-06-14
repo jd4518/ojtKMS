@@ -46,6 +46,7 @@ create table board(
 alter table accuser add menu_no number(22) not null
 alter table board add constraint pk_board_board_no primary key (board_no,category_no,menu_no)
 create sequence seq_board_board_no
+alter table board add (member_no number(22))	
 
 create table menu(
 	menu_no 	number(22)	 primary key not null,
@@ -60,6 +61,9 @@ create table category(
 	constraint pk_category_category_no primary key(category_no,menu_no),
 	constraint	category_menu_no foreign key(menu_no) references menu(menu_no) on delete cascade
 )
+drop table cateogry
+alter table board add constraint fk_board_member_no foreign key (member_no) 
+			references member(member_no) on delete cascade
 create sequence seq_category_category_no
 
 create table files(
@@ -120,3 +124,42 @@ select * from board
 		member m
 	where
 		b.member_no = m.member_no
+update board set member_no=1
+insert into menu(menu_no,menu_name) values(seq_menu_menu_no.nextval,'공지사항')
+insert into menu(menu_no,menu_name) values(seq_menu_menu_no.nextval,'Programming')
+insert into menu(menu_no,menu_name) values(seq_menu_menu_no.nextval,'Q & A')
+select * from menu;
+insert into CATEGORY(category_no,category_name,menu_no) values(seq_category_category_no.nextval,'',)
+select * from category;
+insert into board(menu_no,category_no,board_no,board_title,board_content) values(1,2,seq_board_board_no.nextval,'테스트','테스트입니다.');
+select * from board
+select * from member
+
+	select
+		b.board_no,
+		b.menu_no,
+		b.category_no,
+		b.board_title,
+		b.board_content,
+		b.board_complete,
+		b.board_regdate,
+		b.board_flag,
+		b.member_no,
+		m.member_id
+	from
+		board b,
+		member m
+	where
+		b.member_no = m.member_no
+	and
+		b.menu_no = 1
+	and
+		b.category_no= 2
+
+		select 
+		menu_no,
+		menu_name
+	from
+		menu
+		
+commit

@@ -9,9 +9,9 @@ import com.project.dao.MemberDao;
 import com.project.model.Member;
 
 @Service
-public class MemberAddService {
+public class MemberService {
 
-	static Log log = LogFactory.getLog(MemberAddService.class);
+	static Log log = LogFactory.getLog(MemberService.class);
 	@Autowired
 	private MemberDao memberDao;
 	

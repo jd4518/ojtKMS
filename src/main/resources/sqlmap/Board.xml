@@ -2,10 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.board">
-
-<select id="selectBoardList" parameterType="Board" resultType="Board">
+	
+<select id="selectBoardList" parameterType="Category" resultType="Board">
 	select
 		b.board_no,
+		b.menu_no,
 		b.category_no,
 		b.board_name,
 		b.board_title,
@@ -20,6 +21,10 @@
 		member m
 	where
 		b.member_no = m.member_no
+	and
+		b.menu_no = 1
+	and
+		b.category_no=2
 </select>
 
 </mapper>

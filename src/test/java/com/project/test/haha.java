@@ -3,7 +3,7 @@ package com.project.test;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 import com.project.model.Member;
-import com.project.service.MemberAddService;
+import com.project.service.MemberService;
 
 public class haha {
 
@@ -12,7 +12,7 @@ public static void main(String[] args) {
 	ctx = new GenericXmlApplicationContext(
 			"spring/beans_dao.xml");
 	
-	MemberAddService mas = ctx.getBean(MemberAddService.class);
+	MemberService mas = ctx.getBean(MemberService.class);
 	Member member = null;
 	System.out.println(member);
 	

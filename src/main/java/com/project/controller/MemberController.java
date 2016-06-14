@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.model.Member;
-import com.project.service.MemberAddService;
+import com.project.service.MemberService;
 
 @Controller
 @RequestMapping(value="/member")
@@ -19,7 +19,7 @@ public class MemberController {
 	static Log log = LogFactory.getLog(MemberController.class);
 	
 	@Autowired
-	MemberAddService memberAddService;
+	MemberService memberService;
 	
 	@RequestMapping(value="/memberMain.do")
 	public String memberMain(){
@@ -42,9 +42,8 @@ public class MemberController {
 	@RequestMapping(value="/member.do",method=RequestMethod.POST)
 	@ResponseBody
 	public void memberAdd(@RequestBody Member member){
-		System.out.println("ggggg");
 		
-		memberAddService.add(member);
+		memberService.add(member);
 		
 	}
 }
