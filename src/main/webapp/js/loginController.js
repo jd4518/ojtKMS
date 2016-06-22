@@ -11,7 +11,6 @@ app.controller('loginCtrl', function($scope, $http, $location) {
 //	$scope.name = "fihi";
 //	$scope.join = {};
 //	$scope.join.memberId = "hihi";
-//
 //	$scope.cl = function() {
 //		$location.path("/main.do");
 //		alert("아아아");

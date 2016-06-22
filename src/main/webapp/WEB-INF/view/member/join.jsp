@@ -7,7 +7,6 @@
 <%
 	request.setCharacterEncoding("utf-8");
 %>
-<%@ include file="/WEB-INF/view/include/common.jsp"%>
 </head>
 <body>
 
@@ -22,25 +21,23 @@
 			<div class="form">
 				<h2>Create an account</h2>
 				<form class="form-horizontal" novalidate="novalidate"
-					data-ng-submit="submit()">
+					data-ng-submit="submit()" method="POST">
 					<input type="text" data-ng-model="join.memberId" name="memberId"
-						placeholder="Id" value="${param.memberId}" /> 
+						placeholder="Id"  /> 
 					<input type="email"
 						data-ng-model="join.memberEmail" name="memberEmail"
-						placeholder="Email Address" value="${param.memberEmail}" />
+						placeholder="Email Address" />
 					<input
 						type="text" data-ng-model="join.memberName" name="memberName"
-						data-ng-model="name" placeholder="Name" /> {{name}}
-					{{join.memberId}} 
+						data-ng-model="name" placeholder="Name" /> 
 					<input type="password"
 						data-ng-model="join.memberPassword" name="memberPassword"
 						placeholder="Password" />
-						 <input type="submit" value="회원가입" />
+						 <input type="submit"  value="회원가입" />
 					<button type="button" data-ng-click="cl()">가입취소</button>
 				</form>
 			</div>
 		</div>
-		<hr>
 	</article>
 
 </body>

@@ -7,12 +7,8 @@ app.config(function($routeProvider) {
 });
 
 app.controller('joinCtrl', function($scope, $http, $location) {
-	$scope.name = "fihi";
 	$scope.join = {};
-	$scope.join.memberId = "hihi";
-
 	$scope.cl = function() {
-		alert($location.path());
 		location.href = "/Project/main.do";
 	}
 
@@ -27,7 +23,7 @@ app.controller('joinCtrl', function($scope, $http, $location) {
 			location.href = "/Project/board/boardMain.do#/bMain";
 		}, function(reason) {
 			$scope.join = reason.data;
-			alert("error");
+			alert("error"+join);
 			location.href = "/Project/main.do";
 		});
 	}

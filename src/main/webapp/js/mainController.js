@@ -1,5 +1,5 @@
 
-var app = angular.module('projectApp', ['ngRoute'])
+var app = angular.module('projectApp', ['ngRoute','ui.bootstrap','ngTouch']);
 
 app.config(function ($routeProvider) {
 	$routeProvider

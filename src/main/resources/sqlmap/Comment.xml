@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.comment">
+	
+<select id="selectCommentList" parameterType="Comment" resultType="java.util.HashMap" >
+	select 
+		r.reply_no,
+		r.reply_content,
+		r.board_no,
+		r.reply_regdate,
+		r.category_no,
+		r.member_id,
+		m.member_name
+	from
+		reply r,
+		member m
+	where 
+		r.member_id = m.member_id
+	and 
+		r.board_no = #{boardNo}
+	and
+		r.category_no = #{categoryNo}
+	order by r.reply_regdate
+</select>
+
+</mapper>

@@ -8,7 +8,7 @@ public class Pagination {
 		private int totalItem;	// select count(*) from city
 		private int pageNo;		// request Parameter pageNo
 		private int itemNo;
-		
+		private int categoryNo;
 		/*
 		 * read-only
 		 */
@@ -140,12 +140,21 @@ public class Pagination {
 		}
 		
 		public int getStart() {
-			return firstItem - 1;
+			return firstItem;
 		}
 		
-		public int getLength() {
-			return lastItem - firstItem + 1;
+		public int getEnd() {
+			return lastItem;
 		}
+
+		public int getCategoryNo() {
+			return categoryNo;
+		}
+
+		public void setCategoryNo(int categoryNo) {
+			this.categoryNo = categoryNo;
+		}
+		
 		
 		
 }

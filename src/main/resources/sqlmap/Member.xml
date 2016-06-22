@@ -3,7 +3,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.member">
 
-<insert id="memberAdd" parameterType="com.project.model.Member">
+<insert id="memberAdd" parameterType="Member">
 insert into member(
 	member_no,
 	member_name,
@@ -21,5 +21,15 @@ values
 )
 
 </insert>
+
+<select id="memberDetailSelect" parameterType="String" resultType="Member">
+	select
+		  member_id,
+		  member_password,
+		  authority
+	from
+		member
+	where member_id = #{memberName}
+</select>
 
 </mapper>

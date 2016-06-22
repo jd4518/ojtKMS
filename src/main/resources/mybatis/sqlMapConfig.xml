@@ -5,14 +5,14 @@
 <configuration>
 
 	<typeAliases>
-		<typeAlias alias="Admin" type="com.project.model.Admin" />
-		<typeAlias alias="Board" type="com.project.model.Board" />
-		<typeAlias alias="Category" type="com.project.model.Category" />
-		<typeAlias alias="File" type="com.project.model.File" />
-		<typeAlias alias="Member" type="com.project.model.Member" />
-		<typeAlias alias="Menu" type="com.project.model.Menu" />
-		<typeAlias alias="Stop" type="com.project.model.Stop" />
-		<typeAlias alias="Users" type="com.project.model.Users" />
+		<typeAlias alias="Admin" type="com.project.admin.model.Admin" />
+		<typeAlias alias="Board" type="com.project.board.model.Board" />
+		<typeAlias alias="Category" type="com.project.category.model.Category" />
+		<typeAlias alias="File" type="com.project.file.model.File" />
+		<typeAlias alias="Member" type="com.project.member.model.Member" />
+		<typeAlias alias="Menu" type="com.project.menu.model.Menu" />
+		<typeAlias alias="Stop" type="com.project.stop.model.Stop" />
+		<typeAlias alias="Comment" type="com.project.comment.model.Comment" />
 	</typeAliases>
 
 </configuration>

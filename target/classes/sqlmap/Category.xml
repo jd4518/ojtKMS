@@ -3,13 +3,13 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.category">
 	
-<select id="selectCategory" resultType="java.util.HashMap">
+<select id="selectCategory" resultType="java.util.HashMap" >
 	select 
 		category_no,
-		category_name
+		category_name,
+		menu_no
 	from
-		category
-	where menu_no = #{menuNo}
+		category order by category_no
 </select>
 
 </mapper>

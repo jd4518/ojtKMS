@@ -8,7 +8,7 @@
 		menu_no,
 		menu_name
 	from
-		menu
+		menu order by menu_no
 </select>
 
 </mapper>

@@ -6,6 +6,7 @@
 <%@ include file="/WEB-INF/view/include/common.jsp"%>
 <sitemesh:write property='head'/>
 <script type="text/javascript">
+
 var currenttime = new Date();
 //var montharray=new Array("01","02","03","04","05","06","07","08","09","10","11","12")
 var serverdate=new Date(currenttime)
@@ -36,9 +37,10 @@ document.getElementById("servertime").innerHTML=timestring
 window.onload=function(){
 setInterval("displaytime()", 1000)
 }
+
 </script>
 </head>
-<body data-ng-controller="boardMainCtrl">
+<body data-ng-controller="boardMainCtrl" style="background-color:#000000;"  >
 
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
@@ -53,8 +55,7 @@ setInterval("displaytime()", 1000)
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/Project/main.do"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Mhome</a></li>
-				<li><a href="/Project/board/boardMain.do#/bMain"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Bhome </a></li>
+				<li><a href="/Project/board/boardMain.do#/bMain"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Home </a></li>
              	<li><a href="#"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</a></li>
                 <li><a href="/Project/member/memberMain.do#/login"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Log In</a></li>
             </ul>
@@ -90,19 +91,23 @@ setInterval("displaytime()", 1000)
 					                                        </div>
 					</div></div>
                 </li>
-                <li>
-                    <a href="/Project/main.do"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Mhome</a>
-                </li>
                   <li>
-                    <a href="/Project/board/boardMain.do#/bMain"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Bhome</a>
+                    <a href="/Project/board/boardMain.do#/bMain"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a>
                 </li>
-                <li data-ng-repeat="x in menu">
-                    <a  data-ng-mouseover="mOver({{x.MENU_NO}})"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>{{x.MENU_NAME}}</a>
-                    <div class="glyphicon glyphicon-home" data-ng-show="no">zzz{{no}}</div>
-                </li>
-                <li>
-                <a herf="#" data-ng-mouseover="mOver()">zzz{{no}}</a>
-                <div class="glyphicon glyphicon-home" data-ng-show="no"></div>
+                
+                <li >
+                <div data-ng-mouseover="mOver(menu.menu[0].MENU_NO)" data-ng-mouseleave="mLeave()">
+                    <a  ><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>{{menu.menu[0].MENU_NAME}} {{menu.menu[0].MENU_NO}}</a>
+                    <div data-ng-show="n1" data-ng-repeat="x in menu.cateogry"><a href="/Project/board/boardMain.do#/boardList/{{x.CATEGORY_NO}}"> <span  class="glyphicon glyphicon-home"data-ng-show="{{x.MENU_NO==menu.menu[0].MENU_NO}}" >{{x.CATEGORY_NAME}} {{x.CATEGORY_NO}}</span></a></div>
+                    </div>
+                    <div data-ng-mouseover="mOver(menu.menu[1].MENU_NO)" data-ng-mouseleave="mLeave()">
+                    <a  ><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>{{menu.menu[1].MENU_NAME}} {{menu.menu[1].MENU_NO}}</a>
+                    <div data-ng-show="n2" data-ng-repeat="x in menu.cateogry"><a href="/Project/board/boardMain.do#/bMain"> <span  class="glyphicon glyphicon-home"data-ng-show="{{x.MENU_NO==menu.menu[1].MENU_NO}}" >{{x.CATEGORY_NAME}}</span></a></div>
+                    </div>
+                    <div data-ng-mouseover="mOver(menu.menu[2].MENU_NO)" data-ng-mouseleave="mLeave()">
+                    <a  ><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>{{menu.menu[2].MENU_NAME}} {{menu.menu[2].MENU_NO}}</a>
+                    <div data-ng-show="n3" data-ng-repeat="x in menu.cateogry"><a> <span  class="glyphicon glyphicon-home"data-ng-show="{{x.MENU_NO==menu.menu[2].MENU_NO}}" >{{x.CATEGORY_NAME}}</span></a></div>
+                    </div>
                 </li>
              <!--    <li>
                     <a href="#"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Programming</a>

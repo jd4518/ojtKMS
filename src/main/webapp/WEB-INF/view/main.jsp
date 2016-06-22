@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-
+<%@ include file="/WEB-INF/view/include/common.jsp"%>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -29,20 +29,7 @@
 							<div id="content">
 								<form class="form-horizontal" role="form"
 									action="member/join.do" method="post">
-									<div class="form-group">
-										<label class="control-label col-sm-2" for="id">ID:</label>
-										<div class="col-sm-10">
-											<input type="text" data-ng-model="name" name="memberId"
-												class="form-control" id="id" placeholder="Enter id">
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="control-label col-sm-2" for="email">Email:</label>
-										<div class="col-sm-10">
-											<input type="text" data-ng-model="email" name="memberEmail"
-												class="form-control" id="email" placeholder="Enter email">
-										</div>
-									</div>
+								
 									<div class="form-group">
 										<div class="col-sm-offset-2 col-sm-10">
 											<!--       <div class="checkbox"> -->
@@ -51,9 +38,13 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<div class="col-sm-offset-2 col-sm-10">
+										<div class="col-sm-offset-1 col-sm-5">
 											<a href="member/memberMain.do"
-												class="btn btn-lg btn-primary btn-block">Sign Up</a>
+												class="btn btn-lg btn-success btn-block">회원가입</a>
+										</div>
+										<div class="col-sm-offset-1 col-sm-5">
+											<a href="member/memberMain.do#/login"
+												class="btn btn-lg btn-primary btn-block">로그인</a>
 										</div>
 									</div>
 								</form>

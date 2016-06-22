@@ -24,6 +24,13 @@
 	src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-sanitize.min.js"></script>
 <script
 	src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-touch.min.js"></script>
+	<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-touch.js"></script>
+		<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.3.3/ui-bootstrap.js"></script>
+		<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.3.3/ui-bootstrap-tpls.js"></script>
+	
 <!-- cdn -->
 <script src='http://codepen.io/andytran/pen/vLmRVp.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-hover-dropdown/2.2.1/bootstrap-hover-dropdown.js'></script>
@@ -57,6 +64,8 @@
 <c:url var="joinController_js" value="/js/joinController.js" />
 <c:url var="loginController_js" value="/js/loginController.js" />
 <c:url var="boardMainController_js" value="/js/boardMainController.js" />
+<c:url var="boardListController_js" value="/js/boardListController.js" />
+<c:url var="boardDetailController_js" value="/js/boardDetailController.js" />
 <!-- URL경로 설정 -->
 
 
@@ -66,3 +75,5 @@
 <script type="text/javascript" src="${joinController_js}"></script>
 <script type="text/javascript" src="${loginController_js}"></script>
 <script type="text/javascript" src="${boardMainController_js}"></script>
+<script type="text/javascript" src="${boardListController_js}"></script>
+<script type="text/javascript" src="${boardDetailController_js}"></script>

@@ -3,28 +3,79 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.board">
 	
-<select id="selectBoardList" parameterType="Category" resultType="Board">
+<select id="selectBoardList" parameterType="com.project.util.Pagination" resultType="java.util.HashMap">
 	select
-		b.board_no,
-		b.menu_no,
-		b.category_no,
-		b.board_name,
-		b.board_title,
-		b.board_content,
-		b.board_complete,
-		b.board_regdate,
-		b.board_flag,
-		b.member_no,
-		m.member_id
+		h.*
 	from
-		board b,
-		member m
+	(
+		select 
+			ROWNUM r, t.* 
+		from 
+		(
+			select 
+				ROWNUM rn, e.* 
+			from 
+			(
+				select
+					b.board_no,
+					b.menu_no,
+					b.category_no,
+					b.board_title,
+					b.board_content,
+					b.board_complete,
+					b.board_regdate,
+					b.board_flag,
+					b.member_id,
+					m.member_name
+				from
+					board b,
+					member m
+				where
+					b.member_id = m.member_id
+				and
+					b.category_no = #{categoryNo}
+			) e order by rn desc
+		)t
+	)h 
+	where r between #{start} and #{end}
+</select>
+
+<select id="selectBoardDetail" parameterType="Board" resultType="java.util.HashMap">
+	select
+			b.board_no,
+			b.menu_no,
+			b.category_no,
+			b.board_title,
+			b.board_content,
+			b.board_complete,
+			b.board_regdate,
+			b.board_flag,
+			b.member_id,
+			m.member_name,
+			c.category_name
+	from
+			board b,
+			member m,
+			category c
 	where
-		b.member_no = m.member_no
+			b.member_id = m.member_id
 	and
-		b.menu_no = 1
+			b.category_no = c.category_no
 	and
-		b.category_no=2
+			b.category_no = #{categoryNo}
+	and
+			b.board_no = #{boardNo}
+
+
+</select>
+
+<select id="selectBoardCount" parameterType="int" resultType="int">
+	select 
+		count(*) 
+	from 
+		board 
+	where
+		category_no = #{categoryNo}
 </select>
 
 </mapper>
