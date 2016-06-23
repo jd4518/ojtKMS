@@ -24,12 +24,20 @@ values
 
 <select id="memberDetailSelect" parameterType="String" resultType="Member">
 	select
-		  member_id,
-		  member_password,
+		  member_id 		as memberId,
+		  member_password 	as memberPassword,
+		  member_name 		as memberName,
+		  member_email 		as memberEmail,
+		  member_mpoint 	as memberMasterPoint,
+		  member_rpoint 	as	memberReportPoint,
+		  member_spoint 	as	memberStopPoint,
+		  member_flag 		as memberFlag,
+		  member_last_login as memberLastLogin,
 		  authority
 	from
 		member
-	where member_id = #{memberName}
+	where 
+		member_id = #{memberName , jdbcType=VARCHAR}
 </select>
 
 </mapper>

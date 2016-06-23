@@ -44,6 +44,7 @@ setInterval("displaytime()", 1000)
 
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
+     <sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ADMIN')">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
@@ -53,11 +54,19 @@ setInterval("displaytime()", 1000)
             </button>
             <a class="navbar-brand" href="#menu-toggle" id="menu-toggle"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
         </div>
+        </sec:authorize>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
 				<li><a href="/Project/board/boardMain.do#/bMain"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Home </a></li>
              	<li><a href="#"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</a></li>
+             	<sec:authorize access="hasRole('ROLE_ANONYMOUS')">
                 <li><a href="/Project/member/memberMain.do#/login"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Log In</a></li>
+                </sec:authorize>
+                <sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ADMIN')">
+                <li>
+		      <a href="${pageContext.request.contextPath}/logout.do"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Log Out</a>
+		      </li>
+        </sec:authorize>
             </ul>
             <form class="navbar-form navbar-right" action="#" method="GET">
            		<div class="input-group">
@@ -80,7 +89,7 @@ setInterval("displaytime()", 1000)
                     <br>
                 </li>
                 <li class="sidebar-brand">
-                    <a href="#" class="navbar-brand">
+                    <a href="#" class="navbar-brand" style="font-weight: bold;">
                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Profile
                     </a>
                 </li>
@@ -92,21 +101,21 @@ setInterval("displaytime()", 1000)
 					</div></div>
                 </li>
                   <li>
-                    <a href="/Project/board/boardMain.do#/bMain"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a>
+                    <a style="font-weight: bold;" href="/Project/board/boardMain.do#/bMain"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a>
                 </li>
                 
                 <li >
                 <div data-ng-mouseover="mOver(menu.menu[0].MENU_NO)" data-ng-mouseleave="mLeave()">
-                    <a  ><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>{{menu.menu[0].MENU_NAME}} {{menu.menu[0].MENU_NO}}</a>
-                    <div data-ng-show="n1" data-ng-repeat="x in menu.cateogry"><a href="/Project/board/boardMain.do#/boardList/{{x.CATEGORY_NO}}"> <span  class="glyphicon glyphicon-home"data-ng-show="{{x.MENU_NO==menu.menu[0].MENU_NO}}" >{{x.CATEGORY_NAME}} {{x.CATEGORY_NO}}</span></a></div>
+                    <a style="font-weight: bold;" ><span class="glyphicon glyphicon-home" aria-hidden="true" ></span> {{menu.menu[0].MENU_NAME}}</a>
+                    <div data-ng-show="n1" data-ng-repeat="x in menu.cateogry"> <a href="/Project/board/boardMain.do#/boardList/{{x.CATEGORY_NO}}{{menu.menu[0].MENU_NO}}" data-ng-show="{{x.MENU_NO==menu.menu[0].MENU_NO}}" style="color:#fff; font-weight: bold; padding-left: 25px;"> <span  class="glyphicon glyphicon-tasks" ></span> {{x.CATEGORY_NAME}}</a></div>
                     </div>
                     <div data-ng-mouseover="mOver(menu.menu[1].MENU_NO)" data-ng-mouseleave="mLeave()">
-                    <a  ><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>{{menu.menu[1].MENU_NAME}} {{menu.menu[1].MENU_NO}}</a>
-                    <div data-ng-show="n2" data-ng-repeat="x in menu.cateogry"><a href="/Project/board/boardMain.do#/bMain"> <span  class="glyphicon glyphicon-home"data-ng-show="{{x.MENU_NO==menu.menu[1].MENU_NO}}" >{{x.CATEGORY_NAME}}</span></a></div>
+                    <a style="font-weight: bold;" ><span class="glyphicon glyphicon-home" aria-hidden="true" ></span> {{menu.menu[1].MENU_NAME}}</a>
+                    <div data-ng-show="n2" data-ng-repeat="x in menu.cateogry"> <a href="/Project/board/boardMain.do#/boardList/{{x.CATEGORY_NO}}{{menu.menu[1].MENU_NO}}" data-ng-show="{{x.MENU_NO==menu.menu[1].MENU_NO}}" style="color:#fff; font-weight: bold; padding-left: 25px;"> <span  class="glyphicon glyphicon-tasks" ></span> {{x.CATEGORY_NAME}}</a></div>
                     </div>
                     <div data-ng-mouseover="mOver(menu.menu[2].MENU_NO)" data-ng-mouseleave="mLeave()">
-                    <a  ><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>{{menu.menu[2].MENU_NAME}} {{menu.menu[2].MENU_NO}}</a>
-                    <div data-ng-show="n3" data-ng-repeat="x in menu.cateogry"><a> <span  class="glyphicon glyphicon-home"data-ng-show="{{x.MENU_NO==menu.menu[2].MENU_NO}}" >{{x.CATEGORY_NAME}}</span></a></div>
+                    <a style="font-weight: bold;" ><span class="glyphicon glyphicon-home" aria-hidden="true" ></span> {{menu.menu[2].MENU_NAME}}</a>
+                    <div data-ng-show="n3" data-ng-repeat="x in menu.cateogry"> <a href="/Project/board/boardMain.do#/boardList/{{x.CATEGORY_NO}}{{menu.menu[2].MENU_NO}}" data-ng-show="{{x.MENU_NO==menu.menu[2].MENU_NO}}" style="color:#fff;  padding-left: 25px;"> <span  class="glyphicon glyphicon-tasks" ></span> {{x.CATEGORY_NAME}}</a></div>
                     </div>
                 </li>
              <!--    <li>

@@ -60,10 +60,11 @@ create table board(
 	board_regdate 	date 			default sysdate not null,
 	board_flag 		varchar2(10) 	default 'Y' not null,
 	member_id  	 	varchar2(12) 		not null,
-	constraint pk_board_board_no primary key(board_no,category_no,menu_no),
+	constraint pk_board_board_no primary key(board_no,category_no),
 	constraint board_member_no foreign key(member_id) references member(member_id) on delete cascade
 )
-alter table board drop (board_name)
+alter table board rename constraint pk_board_board_no primary key(board_no,category_no) to pk_board_board_no primary key(board_no,cateogry_no,menu_no)
+alter table board drop (menu_no)
 alter table accuser add menu_no number(22) not null
 alter table board add constraint pk_board_board_no primary key (board_no,category_no,menu_no)
 create sequence seq_board_board_no
@@ -111,6 +112,7 @@ create table reply(
 	reply_regdate   date			default sysdate not null,
 	menu_no 		number(22)		
 )
+select * from reply
 drop table reply
 alter table reply drop constraint fk_reply_board
 alter table reply add constraint fk_reply_board foreign key (board_no,category_no,menu_no)
@@ -260,4 +262,13 @@ select
 			b.board_no = 26
 			
 			select member_id as username,member_password as password from member where member_id = '1234'
+			
+				select
+		  member_id,
+		  member_password,
+		  authority
+	from
+		member
+	where member_id = '1234'
+	select * from board
 commit

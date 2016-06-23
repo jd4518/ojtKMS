@@ -2,7 +2,6 @@
 app.config(function ($routeProvider) {
 	$routeProvider.when('/bMain',{
 		templateUrl:'bMain.do',
-		controller:'bMainCtrl'
 	});
 });
 

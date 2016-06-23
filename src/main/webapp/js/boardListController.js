@@ -1,6 +1,6 @@
 
 app.config(function($routeProvider) {
-	$routeProvider.when('/boardList/:CATEGORY_NO', {
+	$routeProvider.when('/boardList/:CATEGORY_NO:menuNo', {
 		templateUrl : 'boardList.do',
 		controller : 'boardListCtrl'
 	});
@@ -11,6 +11,8 @@ app.controller('boardListCtrl',function($scope, $http, $routeParams){
 	$scope.list={};
 	$scope.pageNo=1;
 	$scope.categoryNo = $routeParams.CATEGORY_NO;
+	$scope.menuNo = $routeParams.menuNo;
+
 	 
 	$scope.selectPage = function(){
 		var ajax = $http.get("/Project/board/boardGet/"+$routeParams.CATEGORY_NO+$scope.pageNo+"x.do",{

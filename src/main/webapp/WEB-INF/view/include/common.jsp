@@ -66,6 +66,7 @@
 <c:url var="boardMainController_js" value="/js/boardMainController.js" />
 <c:url var="boardListController_js" value="/js/boardListController.js" />
 <c:url var="boardDetailController_js" value="/js/boardDetailController.js" />
+<c:url var="boardInsertController_js" value="/js/boardInsertController.js" />
 <!-- URL경로 설정 -->
 
 
@@ -77,3 +78,4 @@
 <script type="text/javascript" src="${boardMainController_js}"></script>
 <script type="text/javascript" src="${boardListController_js}"></script>
 <script type="text/javascript" src="${boardDetailController_js}"></script>
+<script type="text/javascript" src="${boardInsertController_js}"></script>

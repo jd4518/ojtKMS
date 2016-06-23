@@ -21,15 +21,15 @@ public class BoardDetailService {
 	@Autowired
 	private BoardDao boardDao;
 	
-	public List<Board> getBoardDetail(int boardNo, int categoryNo){
+	public Board getBoardDetail(int boardNo, int categoryNo){
 		System.out.println("select boarddetail start");
 		Board board = new Board();
 		board.setBoardNo(boardNo);
 		board.setCategoryNo(categoryNo);
-		List<Board> list = boardDao.selectBoardDetail(board);
+		Board b = boardDao.selectBoardDetail(board);
 		
 		System.out.println("select board detail end");
-		return list;
+		return b;
 	}
 
 }

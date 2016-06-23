@@ -4,14 +4,18 @@ import com.project.util.Pagination;
 
 public class Board {
 	
+	private int menuNo;
 	private int boardNo;
 	private int categoryNo;
 	private int memberNo;
+	private String memberId;
+	private String memberName;
 	private String boardTitle;
 	private String boardContent;
 	private String boardComplete;
 	private String boardRegDate;
 	private String boardFlag;
+	private String categoryName;
 	private Pagination page;
 	public int getBoardNo() {
 		return boardNo;
@@ -66,6 +70,30 @@ public class Board {
 	}
 	public void setPage(Pagination page) {
 		this.page = page;
+	}
+	public int getMenuNo() {
+		return menuNo;
+	}
+	public void setMenuNo(int menuNo) {
+		this.menuNo = menuNo;
+	}
+	public String getMemberId() {
+		return memberId;
+	}
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
+	public String getMemberName() {
+		return memberName;
+	}
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+	public String getCategoryName() {
+		return categoryName;
+	}
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 	
 	

@@ -16,8 +16,8 @@
             <th>제목</th>
             <th>ID</th>
             <th>작성자</th>
-            <th>수정</th>
-            <th>삭제</th>
+            <th>조회수</th>
+            <th>추천수</th>
          </tr>
       </thead>
       <tbody style="background-color:#ffffff">
@@ -26,10 +26,10 @@
             <td><a href="#/boardDetail/{{notice.BOARD_NO}}{{categoryNo}}">{{notice.BOARD_TITLE}}</a></td>
             <td>{{notice.MEMBER_ID}}</td>
             <td>{{notice.MEMBER_NAME}}</td>
-            <td><a href="#/shareModify/{{share.boardNum}}" class="btn btn-success">Edit...</a></td>
-            <td><a href="#/shareDelete/{{share.boardNum}}" class="btn btn-info">Delete...</a></td>
+            <td>0</td>
+            <td>0</td>
          </tr>
-         <tr><td class="text-center" colspan="6" >
+         <tr><td class="text-center" colspan="4" >
          <div 
                 data-uib-pagination 
                 data-total-items="list.page.totalItem" style="width:800px;" 
@@ -39,13 +39,15 @@
                 data-boundary-links="true">
             </div> 
             </td>
-           
+           <td colspan="2">
+            <span>
+   <a href="#/boardInsert/{{categoryNo}}{{menuNo}}" class="btn btn-primary">게시글등록</a>
+   </span>
+            </td>
          </tr>
       </tbody>
    </table>
-   <div align="right">
-   <a href="#/boardDetail" class="btn btn-primary">게시글등록</a></th>
-   </div>
+   
 </div>
 
 </body>

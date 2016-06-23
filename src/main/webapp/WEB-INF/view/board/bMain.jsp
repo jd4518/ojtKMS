@@ -13,7 +13,8 @@
                     <div class="qsz-title-orange font-16 en">
                         <a href="http://quasarzone.co.kr/bbs/board.php?bo_table=qc_qsz">
                             <span class="pull-right lightgray">+</span>
-                            <b class="lightgray">BIT 공식칼럼 
+                            <b class="lightgray">BIT 공식칼럼
+                            ${member.memberPassword} 
                             </b>
                         </a>
                     </div>

@@ -49,7 +49,7 @@ public class MemberController {
 	
 	@RequestMapping(value="/login.do", method=RequestMethod.GET)
 	public void login(HttpSession session) {
-
+		logger.debug(session.getId());
  
 
 	}

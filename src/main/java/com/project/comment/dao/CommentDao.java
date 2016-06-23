@@ -18,4 +18,8 @@ public class CommentDao {
 		
 		return list;
 	}
+	
+	public void postComment(Comment comment){
+		sqlSession.insert("com.project.comment.insertComment",comment);
+	}
 }

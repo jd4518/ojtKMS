@@ -24,4 +24,22 @@
 	order by r.reply_regdate
 </select>
 
+<insert id="insertComment" parameterType="Comment">
+	insert into reply(
+	reply_no,
+	reply_content,
+	board_no,
+	category_no,
+	member_id
+	)
+	values
+	(
+	seq_reply_reply_no.nextval,
+	#{replyContent, jdbcType=VARCHAR},
+	#{boardNo, jdbcType=INTEGER},
+	#{categoryNo, jdbcType=INTEGER},
+	#{memberId, jdbcType=VARCHAR}
+	)
+</insert>
+
 </mapper>

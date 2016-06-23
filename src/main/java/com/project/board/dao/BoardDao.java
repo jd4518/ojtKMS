@@ -24,14 +24,18 @@ public class BoardDao {
 		return board;
 	}
 	
-	public List<Board> selectBoardDetail(Board board){
-		List<Board> list = sqlSession.selectList("com.project.board.selectBoardDetail",board);
+	public Board selectBoardDetail(Board board){
+		Board b = sqlSession.selectOne("com.project.board.selectBoardDetail",board);
 		
-		return list;
+		return b;
 	}
 	
 	public int selectBoardCount(int categoryNo){
 		return sqlSession.selectOne("com.project.board.selectBoardCount", categoryNo);
+	}
+	
+	public void insertBoard(Board board){
+		sqlSession.insert("com.project.board.insertBoard", board);
 	}
 	
 }

@@ -1,47 +1,49 @@
 package com.project.comment.model;
 
 public class Comment {
-	private static int replyNo;
-	private static String replyContent;
-	private static int boardNo;
-	private static int menuNo;
-	private static int categoryNo;
-	private static int memberNo;
-	public static int getReplyNo() {
+	private  int replyNo;
+	private  int boardNo;
+	private  int menuNo;
+	private  int categoryNo;
+	private  String replyContent;
+	private  String memberId;
+	public  int getReplyNo() {
 		return replyNo;
 	}
-	public static void setReplyNo(int replyNo) {
-		Comment.replyNo = replyNo;
+	public  void setReplyNo(int replyNo) {
+		this.replyNo = replyNo;
 	}
-	public static String getReplyContent() {
-		return replyContent;
-	}
-	public static void setReplyContent(String replyContent) {
-		Comment.replyContent = replyContent;
-	}
-	public static int getBoardNo() {
+	public  int getBoardNo() {
 		return boardNo;
 	}
-	public static void setBoardNo(int boardNo) {
-		Comment.boardNo = boardNo;
+	public  void setBoardNo(int boardNo) {
+		this.boardNo = boardNo;
 	}
-	public static int getMenuNo() {
+	public  int getMenuNo() {
 		return menuNo;
 	}
-	public static void setMenuNo(int menuNo) {
-		Comment.menuNo = menuNo;
+	public  void setMenuNo(int menuNo) {
+		this.menuNo = menuNo;
 	}
-	public static int getCategoryNo() {
+	public  int getCategoryNo() {
 		return categoryNo;
 	}
-	public static void setCategoryNo(int categoryNo) {
-		Comment.categoryNo = categoryNo;
+	public  void setCategoryNo(int categoryNo) {
+		this.categoryNo = categoryNo;
 	}
-	public static int getMemberNo() {
-		return memberNo;
+	public  String getReplyContent() {
+		return replyContent;
 	}
-	public static void setMemberNo(int memberNo) {
-		Comment.memberNo = memberNo;
+	public  void setReplyContent(String replyContent) {
+		this.replyContent = replyContent;
 	}
+	public  String getMemberId() {
+		return memberId;
+	}
+	public  void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
+	
+	
 	
 }

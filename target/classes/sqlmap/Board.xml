@@ -26,12 +26,16 @@
 					b.board_regdate,
 					b.board_flag,
 					b.member_id,
-					m.member_name
+					m.member_name,
+					c.category_name
 				from
 					board b,
-					member m
+					member m,
+					category c
 				where
 					b.member_id = m.member_id
+				and
+					b.category_no = c.category_no
 				and
 					b.category_no = #{categoryNo}
 			) e order by rn desc
@@ -40,19 +44,19 @@
 	where r between #{start} and #{end}
 </select>
 
-<select id="selectBoardDetail" parameterType="Board" resultType="java.util.HashMap">
+<select id="selectBoardDetail" parameterType="Board" resultType="Board">
 	select
-			b.board_no,
-			b.menu_no,
-			b.category_no,
-			b.board_title,
-			b.board_content,
-			b.board_complete,
-			b.board_regdate,
-			b.board_flag,
-			b.member_id,
-			m.member_name,
-			c.category_name
+			b.board_no			 as boardNo,
+			b.menu_no 			 as menuNo,
+			b.category_no		 as categoryNo,
+			b.board_title 		 as boardTitle,
+			b.board_content	 	 as boardContent,
+			b.board_complete	 as boardComplete,
+			b.board_regdate		 as boardRegDate,
+			b.board_flag		 as boardFlag,
+			b.member_id			 as memberId,
+			m.member_name		 as memberName,
+			c.category_name		 as categoryName
 	from
 			board b,
 			member m,
@@ -78,4 +82,23 @@
 		category_no = #{categoryNo}
 </select>
 
+<insert id="insertBoard" parameterType="Board">
+	insert into board(
+			board_no			 ,
+			category_no		 	 ,
+			menu_no				 ,
+			board_title 		 ,
+			board_content	 	 ,
+			member_id			 
+	)
+	values
+	(
+			seq_board_board_no.nextval,
+			#{categoryNo, jdbcType=INTEGER},
+			#{menuNo, jdbcType=INTEGER},
+			#{boardTitle, jdbcType=VARCHAR},
+			#{boardContent, jdbcType=VARCHAR},
+			#{memberId, jdbcType=VARCHAR}	
+	)
+</insert>
 </mapper>

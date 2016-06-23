@@ -1,6 +1,5 @@
 package com.project.member.model;
 
-import org.springframework.security.core.userdetails.User;
 
 public class Member{
 	
@@ -13,6 +12,8 @@ public class Member{
 	private int memberReportpoint;
 	private int memberStopPoint;
 	private String memberFlag;
+	private String authority;
+	private String memberLastLogin;
 	
 	public int getMemberNo() {
 		return memberNo;
@@ -68,4 +69,17 @@ public class Member{
 	public void setMemberFlag(String memberFlag) {
 		this.memberFlag = memberFlag;
 	}
+	public String getAuthority() {
+		return authority;
+	}
+	public void setAuthority(String authority) {
+		this.authority = authority;
+	}
+	public String getMemberLastLogin() {
+		return memberLastLogin;
+	}
+	public void setMemberLastLogin(String memberLastLogin) {
+		this.memberLastLogin = memberLastLogin;
+	}
+	
 }
