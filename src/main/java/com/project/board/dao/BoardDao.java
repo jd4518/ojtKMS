@@ -38,4 +38,27 @@ public class BoardDao {
 		sqlSession.insert("com.project.board.insertBoard", board);
 	}
 	
+	public void updateBoard(Board board){
+		sqlSession.update("com.project.board.updateBoard", board);
+	}
+	
+	public void deleteBoard(Board board){
+		sqlSession.update("com.project.board.deleteBoard", board);
+	}
+	
+	public void increaseHit(Board board){
+		sqlSession.update("com.project.board.increaseHit",board);
+	}
+	
+	public int selectRecommand(Board board){
+		return sqlSession.selectOne("com.project.board.selectRecommand",board);
+	}
+	
+	public void increaseRecommand(Board board){
+		sqlSession.update("com.project.board.increaseRecommand",board);
+	}
+	
+	public void insertRecommand(Board board){
+		sqlSession.insert("com.project.board.insertRecommand",board);
+	}
 }

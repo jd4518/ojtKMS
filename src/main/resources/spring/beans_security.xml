@@ -15,7 +15,22 @@
 <http auto-config="true" use-expressions="true" pattern="/board/boardWrite.do" >
   <csrf disabled="true"/>
 </http>
+<http auto-config="true" use-expressions="true" pattern="/board/boardModify.do" >
+  <csrf disabled="true"/>
+</http>
+<http auto-config="true" use-expressions="true" pattern="/board/boardDelete.do" >
+  <csrf disabled="true"/>
+</http>
+<http auto-config="true" use-expressions="true" pattern="/board/boardHit.do" >
+  <csrf disabled="true"/>
+</http>
+<http auto-config="true" use-expressions="true" pattern="/board/boardRecommand.do" >
+  <csrf disabled="true"/>
+</http>
     <http auto-config="true" use-expressions="true" pattern="/decorators/topMenu" >
+  <csrf disabled="true"/>
+</http>
+ <http auto-config="true" use-expressions="true" pattern="/board/fileUp.do" >
   <csrf disabled="true"/>
 </http>
                          

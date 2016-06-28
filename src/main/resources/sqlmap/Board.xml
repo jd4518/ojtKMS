@@ -23,9 +23,11 @@
 					b.board_title,
 					b.board_content,
 					b.board_complete,
+					b.board_hit,
 					b.board_regdate,
 					b.board_flag,
 					b.member_id,
+					b.board_recommand,
 					m.member_name,
 					c.category_name
 				from
@@ -38,6 +40,8 @@
 					b.category_no = c.category_no
 				and
 					b.category_no = #{categoryNo}
+				and
+					b.board_flag  = 'Y'
 			) e order by rn desc
 		)t
 	)h 
@@ -53,6 +57,8 @@
 			b.board_content	 	 as boardContent,
 			b.board_complete	 as boardComplete,
 			b.board_regdate		 as boardRegDate,
+			b.board_recommand	 as boardRecommandPoint,
+			b.board_hit			 as boardHit,
 			b.board_flag		 as boardFlag,
 			b.member_id			 as memberId,
 			m.member_name		 as memberName,
@@ -80,6 +86,8 @@
 		board 
 	where
 		category_no = #{categoryNo}
+	and 
+		board_flag = 'Y'
 </select>
 
 <insert id="insertBoard" parameterType="Board">
@@ -100,5 +108,74 @@
 			#{boardContent, jdbcType=VARCHAR},
 			#{memberId, jdbcType=VARCHAR}	
 	)
+</insert>
+
+<update id="updateBoard" parameterType="Board">
+	update board set 
+		board_title = #{boardTitle, jdbcType=VARCHAR},
+		board_content = #{boardContent, jdbcType=VARCHAR}
+	where 
+		board_no = #{boardNo, jdbcType=INTEGER}
+	and
+		category_no = #{categoryNo, jdbcType=INTEGER}
+	and
+		menu_no = #{menuNo, jdbcType=INTEGER}
+</update>
+
+<update id="deleteBoard" parameterType="Board">
+	update board set
+		board_flag	=	#{boardFlag, jdbcType=VARCHAR}
+	where
+		board_no 	= 	#{boardNo,	jdbcType=INTEGER}
+	and
+		category_no	= 	#{categoryNo,	jdbcType=INTEGER}
+</update>
+
+<update id="increaseHit" parameterType="Board">
+	update board set
+		board_hit   = 	board_hit+1
+	where
+		board_no 	= 	#{boardNo,	jdbcType=INTEGER}
+	and
+		category_no	= 	#{categoryNo,	jdbcType=INTEGER}
+</update>
+
+<select id="selectRecommand" parameterType="Board" resultType="int">
+	select 
+		count(*)
+	from
+		recommand
+	where 
+		board_no 	= 	#{boardNo,	jdbcType=INTEGER}
+	and
+		category_no	= 	#{categoryNo,	jdbcType=INTEGER}
+	and	
+		member_id 	=	#{memberId, 	jdbcType=VARCHAR}
+</select>
+
+<update id="increaseRecommand" parameterType="Board">
+	update board set
+		board_recommand 	=	board_recommand+1
+	where
+		board_no 	= 	#{boardNo,	jdbcType=INTEGER}
+	and
+		category_no	= 	#{categoryNo,	jdbcType=INTEGER}
+
+</update>
+
+<insert id="insertRecommand" parameterType="Board">
+	insert into recommand
+	(
+		board_no 	,
+		category_no	,
+		member_id	
+	)
+	values
+	(
+			#{boardNo, jdbcType=INTEGER},
+			#{categoryNo, jdbcType=INTEGER},
+			#{memberId, jdbcType=VARCHAR}
+	)
+
 </insert>
 </mapper>

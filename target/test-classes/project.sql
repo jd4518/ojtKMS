@@ -63,8 +63,11 @@ create table board(
 	constraint pk_board_board_no primary key(board_no,category_no),
 	constraint board_member_no foreign key(member_id) references member(member_id) on delete cascade
 )
+select * from board
+alter table board add board_hit number(22) default 0
+alter table board add board_recommand number(22) default 0
 alter table board rename constraint pk_board_board_no primary key(board_no,category_no) to pk_board_board_no primary key(board_no,cateogry_no,menu_no)
-alter table board drop (menu_no)
+alter table board drop (board_hit)
 alter table accuser add menu_no number(22) not null
 alter table board add constraint pk_board_board_no primary key (board_no,category_no,menu_no)
 create sequence seq_board_board_no
@@ -134,6 +137,15 @@ create table accuser(
 alter table accuser add constraint fk_accuser_board foreign key (board_no,category_no,menu_no)
 			references board(board_no,category_no,menu_no) on delete cascade
 create sequence seq_accuser_accuser_no
+
+create table recommand(
+	board_no		number(22),
+	category_no		number(22),
+	member_id		varchar2(12),
+	constraint pk_recommand_recommand primary key (board_no,category_no,member_id),
+	constraint	fk_recmmand_recommand foreign key(member_id) references member(member_id) on delete cascade
+)
+
 delete from MEMBER;
 select * from MEMBER
 select a.admin_no, m.member_no, m.member_name from admin a, member m where a.member_no = m.member_no
@@ -271,4 +283,22 @@ select
 		member
 	where member_id = '1234'
 	select * from board
+	select * from recommand
+	delete from recommand
+	select * from board
+	update board set
+		board_recommand 	=	0
+	where
+		board_no 	= 	85
+	and
+		category_no	= 	1
+		
+		select 
+		count(*) 
+	from 
+		board 
+	where
+		board_flag = 'N'
+		
+		select * from files
 commit

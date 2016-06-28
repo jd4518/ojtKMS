@@ -1,7 +1,10 @@
 package com.project.board.service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -10,6 +13,9 @@ import org.springframework.stereotype.Service;
 
 import com.project.board.dao.BoardDao;
 import com.project.board.model.Board;
+import com.project.file.dao.FileDao;
+import com.project.file.model.Files;
+import com.project.util.FileUpload;
 
 @Service
 public class BoardInsertService {
@@ -19,9 +25,32 @@ public class BoardInsertService {
 	@Autowired
 	private BoardDao boardDao;
 	
-	public void insertBoard(Board board){
+	@Autowired
+	private FileDao fileDao;
+	
+	@Autowired
+	private FileUpload fileUpload;
+	
+	
+	public void insertBoard(Board board,HttpServletRequest request) throws Exception{
+		System.out.println(board.getMenuNo());
+		System.out.println(board.getCategoryNo());
 		
 		boardDao.insertBoard(board);
+		String filePath = request.getSession().getServletContext().getRealPath("/fileUpload");
+		   List<Files> filesList = fileUpload.fileUploads(request, filePath);   
+		   Files files = null;
+		   if(filesList.size() > 0){
+			   for(int i=0; i<filesList.size();i++){
+				   files = filesList.get(i);
+				   files.setMenuNo(board.getMenuNo());
+				   files.setCategoryNo(board.getCategoryNo());
+				   System.out.println(files.getBoardNo());
+				   System.out.println(files.getCategoryNo());
+				   System.out.println(files.getFileFakeName());
+				   fileDao.insertFile(files);
+			   }
+		   }
 	}
 
 }

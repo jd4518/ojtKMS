@@ -20,19 +20,19 @@
 			<div class="toggle"></div>
 			<div class="form">
 				<h2>Create an account</h2>
-				<form class="form-horizontal" novalidate="novalidate"
-					data-ng-submit="submit()" method="POST">
+				<form class="form-horizontal" 
+					data-ng-submit="submit()" method="POST"  >
 					<input type="text" data-ng-model="join.memberId" name="memberId"
-						placeholder="Id"  /> 
+						placeholder="Id" required="required"  /> 
 					<input type="email"
 						data-ng-model="join.memberEmail" name="memberEmail"
-						placeholder="Email Address" />
+						placeholder="Email Address"  required="required"/>
 					<input
 						type="text" data-ng-model="join.memberName" name="memberName"
-						data-ng-model="name" placeholder="Name" /> 
+						data-ng-model="name" placeholder="Name" required="required" /> 
 					<input type="password"
 						data-ng-model="join.memberPassword" name="memberPassword"
-						placeholder="Password" />
+						placeholder="Password" required="required" />
 						 <input type="submit"  value="회원가입" />
 					<button type="button" data-ng-click="cl()">가입취소</button>
 				</form>

@@ -12,6 +12,7 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 
 @Controller
@@ -33,4 +34,11 @@ public class MainController {
 	    }
 	    return "/main";
 	}
+	
+	/*@RequestMapping(value="/api/fileupload.do", method=RequestMethod.POST)
+	public void fileupload (HttpServletRequest request, HttpServletResponse response) {
+		MultipartHttpServletRequest mu = (MultipartHttpServletRequest) request;
+		
+		System.out.println(mu.getFile("file").toString());
+	}*/
 }

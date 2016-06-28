@@ -10,6 +10,10 @@
 
 <!-- angularJs -->
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-file-upload/2.3.4/angular-file-upload.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-file-upload/2.3.4/angular-file-upload.js.map"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-file-upload/2.3.4/angular-file-upload.min.js"></script>
+
 <script
 	src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-animate.min.js"></script>
 <script
@@ -67,6 +71,8 @@
 <c:url var="boardListController_js" value="/js/boardListController.js" />
 <c:url var="boardDetailController_js" value="/js/boardDetailController.js" />
 <c:url var="boardInsertController_js" value="/js/boardInsertController.js" />
+<c:url var="boardModifyController_js" value="/js/boardModifyController.js" />
+<c:url var="boardDeleteController_js" value="/js/boardDeleteController.js" />
 <!-- URL경로 설정 -->
 
 
@@ -79,3 +85,5 @@
 <script type="text/javascript" src="${boardListController_js}"></script>
 <script type="text/javascript" src="${boardDetailController_js}"></script>
 <script type="text/javascript" src="${boardInsertController_js}"></script>
+<script type="text/javascript" src="${boardModifyController_js}"></script>
+<script type="text/javascript" src="${boardDeleteController_js}"></script>

@@ -1,12 +1,13 @@
 package com.project.file.model;
 
-public class File {
+public class Files {
 	
 	private int fileNo;
 	private String fileRealName;
 	private String fileFakeName;
 	private int boardNo;
-	private int cateogryNo;
+	private int categoryNo;
+	private int menuNo;
 	public int getFileNo() {
 		return fileNo;
 	}
@@ -32,11 +33,17 @@ public class File {
 	public void setBoardNo(int boardNo) {
 		this.boardNo = boardNo;
 	}
-	public int getCateogryNo() {
-		return cateogryNo;
+	public int getCategoryNo() {
+		return categoryNo;
 	}
-	public void setCateogryNo(int cateogryNo) {
-		this.cateogryNo = cateogryNo;
+	public void setCategoryNo(int categoryNo) {
+		this.categoryNo = categoryNo;
+	}
+	public int getMenuNo() {
+		return menuNo;
+	}
+	public void setMenuNo(int menuNo) {
+		this.menuNo = menuNo;
 	}
 	
 	

@@ -6,18 +6,21 @@ app.config(function($routeProvider) {
 	});
 });
 
+
+
 app.controller('boardInsertCtrl',function($scope, $http, $routeParams){
 	
 	$scope.cNo =  $routeParams.categoryNo;
 	$scope.mNo =  $routeParams.menuNo;
+	
 	
 	$scope.board = function(loginId){
 		var ajax = $http.post("/Project/board/boardWrite.do", {
 			categoryNo		: $scope.cNo,
 			menuNo			: $scope.mNo,
 			boardTitle 		: $scope.title,
-			boardContent	: $scope.content,
-			memberId		: loginId
+			memberId		: loginId,
+			boardContent	: $scope.content
 		});
 		ajax.then(function(value) {
 			history.back();
@@ -25,9 +28,11 @@ app.controller('boardInsertCtrl',function($scope, $http, $routeParams){
 			$scope.join = reason.data;
 			alert("error"+join);
 		});
-	}
-	
+	}	
 	$scope.back = function(){
 		history.back();
 	}
+	
+	
+
 });

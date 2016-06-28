@@ -8,6 +8,8 @@ public class Board {
 	private int boardNo;
 	private int categoryNo;
 	private int memberNo;
+	private int boardHit;
+	private int boardRecommandPoint;
 	private String memberId;
 	private String memberName;
 	private String boardTitle;
@@ -22,6 +24,20 @@ public class Board {
 	}
 	public void setBoardNo(int boardNo) {
 		this.boardNo = boardNo;
+	}
+	
+	public int getBoardHit() {
+		return boardHit;
+	}
+	public void setBoardHit(int boardHit) {
+		this.boardHit = boardHit;
+	}
+	
+	public int getBoardRecommandPoint() {
+		return boardRecommandPoint;
+	}
+	public void setBoardRecommandPoint(int boardRecommandPoint) {
+		this.boardRecommandPoint = boardRecommandPoint;
 	}
 	public int getCategoryNo() {
 		return categoryNo;

@@ -7,11 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+<form name="detailForm">
 <div align="center">
    <table class="table">
       <thead class="htable">
       <tr >
-      	<th colspan="6" style="font-size:50px; font-style: italic; ">{{board.categoryName}}{{board.categoryNo}}{{board.boardNo}}</th>
+      	<th colspan="6" style="font-size:50px; font-style: italic; ">{{board.categoryName}}</th>
       </tr>
          <tr>
          	 <th>작성자</th>
@@ -50,20 +51,34 @@
    </table>
 </div>
 <sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ADMIN')">
-<div class="form-group" >
+<div  class="form-group" >
 	<label  class="col-lg-2 cLabel">댓글입력</label>
 	   <div  class="col-lg-7">
-	   <textarea name="content" cols='50' rows='5' data-ng-model="content" required>
+	   <textarea name="content" cols='50' rows='5' data-ng-model="content"  required>
 	   </textarea>
-	   <span style="color:red" data-ng-show="content.$dirty && content.$invalid">
-		<span data-ng-show="content.$error.required">내용을 입력해주세요.</span>
-		</span></div>
+	   <span style="color:red" data-ng-show="detailForm.content.$touched && detailForm.content.$invalid">
+		<div>내용을 입력해주세요.</div>
+		</span>
+		</div>
 	   <div class="help-block with-errors"></div>
-	   <div class="col-lg-2"><input name="button" type="reset" data-ng-click="reply(${member.memberId})" class="btn btn-info btnalign"  value="입력"
-	   data-ng-disabled="content.$invalid"> </div>
-	   <span><input name="button" type="button" data-ng-click="list()" class="btn btn-success" value="목록" ></span>
+	   <div class="col-lg-3" align="right"><a   data-ng-click="reply('${member.memberId}')" class="btn btn-primary"  
+	   data-ng-disabled="detailForm.content.$invalid">입력</a> <a class="custom btn-custom" data-ng-click="recommand('${member.memberId}')"
+	   >좋아요 <i class="fa fa-heart"  aria-hidden="true"> ({{board.boardRecommandPoint}})</i></a></div>
 	</div>
+	<table class="table"  >
+	<tr>
+	<td style="border: 0px;">
+	<div align="right"><input name="button" type="button" data-ng-click="list()" class="btn btn-success" value="목록" >
+	<span data-ng-show="checkId('${member.memberId }')">
+	<a href="#/boardModify/{{board.boardNo}}{{board.categoryNo}}" class="btn btn-warning">수정</a>
+	<a href="#/boardDelete/{{board.boardNo}}{{board.categoryNo}}{{mNo}}" class="btn btn-danger">삭제</a>
+	</span>
+	</div>
+	</td>
+	</tr>
 
+</table>
 </sec:authorize>
+</form>
 </body>
 </html>

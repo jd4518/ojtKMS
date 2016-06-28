@@ -4,10 +4,20 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.project.file.model.Files;
+
 @Repository
 public class FileDao {
 
 	@Autowired
 	private SqlSessionTemplate sqlSession;
+	
+	public void insertFile(Files files){
+		  System.out.println(files.getBoardNo()+"우랄라랄");
+		   System.out.println(files.getCategoryNo()+"우랄라랄");
+		   System.out.println(files.getFileFakeName()+"우랄라랄");
+		   System.out.println(files.getFileRealName()+"리얼");
+		sqlSession.insert("com.project.file.insertFile",files);
+	}
 	
 }

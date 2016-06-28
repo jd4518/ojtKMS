@@ -32,16 +32,6 @@
   <div class="cta"><a href="http://andytran.me">Forgot your password?</a></div>
 </div>
       </article>
-		<c:if test="${not empty error}">
-
-			<div class="error">${error}</div>
-
-		</c:if>
-
-		<c:if test="${not empty msg}">
-
-			<div class="msg">${msg}</div>
-
-		</c:if>
+	
 </body>
 </html>

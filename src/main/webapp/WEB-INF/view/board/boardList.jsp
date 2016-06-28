@@ -21,13 +21,13 @@
          </tr>
       </thead>
       <tbody style="background-color:#ffffff">
-         <tr data-ng-repeat="notice in list.board">
-            <td>{{notice.RN}}</td>
-            <td><a href="#/boardDetail/{{notice.BOARD_NO}}{{categoryNo}}">{{notice.BOARD_TITLE}}</a></td>
-            <td>{{notice.MEMBER_ID}}</td>
-            <td>{{notice.MEMBER_NAME}}</td>
-            <td>0</td>
-            <td>0</td>
+         <tr data-ng-repeat="b in list.board">
+            <td>{{b.RN}}</td>
+            <td><a class="aTag" href="#/boardDetail/{{b.BOARD_NO}}{{categoryNo}}{{menuNo}}">{{b.BOARD_TITLE}}</a></td>
+            <td>{{b.MEMBER_ID}}</td>
+            <td>{{b.MEMBER_NAME}}</td>
+            <td>{{b.BOARD_HIT}}</td>
+            <td>{{b.BOARD_RECOMMAND}}</td>
          </tr>
          <tr><td class="text-center" colspan="4" >
          <div 

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.file">
+<insert id="insertFile" parameterType="Files">
+	insert into files
+	(
+		files_no,
+		menu_no,
+		category_no,
+		board_no,
+		files_realname,
+		files_fakename
+	)
+	values
+	(
+			seq_files_files_no.nextval,
+			#{menuNo, jdbcType=INTEGER},
+			#{categoryNo, jdbcType=INTEGER},
+			(select max(board_no) from board),
+			#{fileRealName, jdbcType=VARCHAR},
+			#{fileFakeName, jdbcType=VARCHAR}
+	)
+</insert>
+
+</mapper>

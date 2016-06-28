@@ -7023,4 +7023,68 @@ button.close {
 	color: #FFFFFF;
 	font-weight: bold;
 }
+.custom {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  
+}
+
+.btn-custom {
+  color: #FFFFFF;
+  background-color: #000;
+}
+.btn-custom:focus,
+.btn-custom.focus {
+  color: #000;
+  background-color: #FFFFFF;
+  text-decoration:none;
+}
+.btn-custom:hover {
+ color: #000;
+  background-color: #FFFFFF;
+  text-decoration:none;	
+}
+
+.aTag{
+	color: #666666;
+	text-decoration:none;	
+}
+.aTag:focus,
+.aTag.focus {
+	color: #000;
+  text-decoration:none;
+}
+.aTag:hover {
+ color: #000;
+  text-decoration:none;	
+}
+.white{
+	color: #FFFFFF;
+}
+.white:focus,
+.white.focus {
+	color: #FFFFFF;
+  text-decoration:none;
+}
+.white:hover {
+color: #FFFFFF;
+  text-decoration:none;	
+}
 /*# sourceMappingURL=bootstrap.css.map */
