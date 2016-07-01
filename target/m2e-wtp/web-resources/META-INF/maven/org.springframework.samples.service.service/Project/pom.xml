@@ -309,6 +309,19 @@
 	    <version>2.4</version>
 	</dependency>
 		
+		
+		 <dependency>
+        <groupId>javax.mail</groupId>
+        <artifactId>mail</artifactId>
+        <version>1.4</version>
+    </dependency>
+		    <!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context-support</artifactId>
+		    <version>${spring-framework.version}</version>
+		</dependency>
+		    
 	</dependencies>
 
 

@@ -3,6 +3,9 @@
     <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <html>
 <head>
+<script type="text/javascript" src="/Project/framework/js/fileinput.js"></script>
+<link rel="stylesheet" href="/Project/framework/css/fileinput.css" />
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
@@ -20,7 +23,6 @@
             	<input type="hidden" name="memberId" value="${member.memberId }">
             	<input type="hidden" name="categoryNo" value="{{cNo}}">
             	<input type="hidden" name="menuNo" value="{{mNo}}">
-            	${member.memberId }
             </th>
          </tr>
       </thead>
@@ -33,7 +35,8 @@
 	         <td colspan="2">
 				         <div class="form-group">
 			      <div class="col-lg-10 col-lg-offset-2">
-			      <input type="file" name="originalFileName" multiple/>
+					     <label class="control-label">Select File</label>
+						<input  name="originalFileName" type="file" class="file" multiple data-show-upload="false" data-show-caption="true">
 			      </div>
 			    </div>
 	         </td>

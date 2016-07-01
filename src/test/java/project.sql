@@ -117,6 +117,7 @@ create table reply(
 )
 select * from reply
 drop table reply
+alter table reply add reply_flag  varchar2(10) default 'Y' not null
 alter table reply drop constraint fk_reply_board
 alter table reply add constraint fk_reply_board foreign key (board_no,category_no,menu_no)
 			references board(board_no,category_no,menu_no) on delete cascade
@@ -300,5 +301,9 @@ select
 	where
 		board_flag = 'N'
 		
+	update reply set
+		reply_flag = 'Y'
+		
 		select * from files
+		select * from reply
 commit

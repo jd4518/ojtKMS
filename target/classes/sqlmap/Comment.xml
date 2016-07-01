@@ -21,6 +21,8 @@
 		r.board_no = #{boardNo}
 	and
 		r.category_no = #{categoryNo}
+	and
+		r.reply_flag = 'Y'
 	order by r.reply_regdate
 </select>
 
@@ -30,6 +32,7 @@
 	reply_content,
 	board_no,
 	category_no,
+	menu_no,
 	member_id
 	)
 	values
@@ -38,8 +41,35 @@
 	#{replyContent, jdbcType=VARCHAR},
 	#{boardNo, jdbcType=INTEGER},
 	#{categoryNo, jdbcType=INTEGER},
+	#{menuNo, jdbcType=INTEGER},
 	#{memberId, jdbcType=VARCHAR}
 	)
 </insert>
 
+<select id="selectReplyCount" parameterType="Comment" resultType="int">
+	select
+		 count(*)
+	from
+		 reply
+	where
+		 category_no = #{categoryNo, jdbcType=INTEGER}
+	and
+		 board_no = #{boardNo, jdbcType=INTEGER}
+</select>
+
+<update id="deleteComment" parameterType="Comment">
+	update 
+		reply 
+	set
+		reply_flag = 'N'
+	where
+		 menu_no = #{menuNo, jdbcType=INTEGER}
+	and
+		 category_no = #{categoryNo, jdbcType=INTEGER}
+	and
+		 board_no = #{boardNo, jdbcType=INTEGER}
+	and
+		 reply_no = #{replyNo,  jdbcType=INTEGER}
+		
+</update>
 </mapper>

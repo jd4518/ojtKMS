@@ -40,4 +40,47 @@ values
 		member_id = #{memberName , jdbcType=VARCHAR}
 </select>
 
+<select id="findMemberId" parameterType="Member" resultType="String">
+	select
+		member_id as memberId
+	from
+		member
+	where
+		member_name = #{memberName , jdbcType=VARCHAR}
+	and
+		member_email = #{memberEmail , jdbcType=VARCHAR}
+
+</select>
+
+<select id="findMemberPw" parameterType="Member" resultType="int">
+	select
+		count(*)
+	from
+		member
+	where
+		member_id = #{memberId , jdbcType=VARCHAR}
+	and
+		member_email = #{memberEmail , jdbcType=VARCHAR}
+	
+</select>
+
+<update id="updateMemberPass" parameterType="Member">
+	update 
+		member
+	set
+		member_password = #{memberPassword, jdbcType=VARCHAR}
+	where
+		member_id = #{memberId , jdbcType=VARCHAR}
+	and
+		member_email = #{memberEmail , jdbcType=VARCHAR}	
+</update>
+
+<select id="memberIdCheck" parameterType="Member" resultType="int">
+	select
+		count(*)
+	from
+		member
+	where
+		member_id = #{memberId , jdbcType=VARCHAR} 
+</select>
 </mapper>

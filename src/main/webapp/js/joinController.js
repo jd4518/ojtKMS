@@ -8,6 +8,7 @@ app.config(function($routeProvider) {
 
 app.controller('joinCtrl', function($scope, $http, $location) {
 	$scope.join = {};
+	$scope.memberId = {};
 	$scope.cl = function() {
 		location.href = "/Project/main.do";
 	}
@@ -27,5 +28,26 @@ app.controller('joinCtrl', function($scope, $http, $location) {
 			location.href = "/Project/main.do";
 		});
 	}
-
+	$scope.a = false;
+	$scope.b = false;
+	$scope.checkId = function(){
+		var ajax = $http.post("/Project/member/memberIdGet.do",{
+			memberId : $scope.join.memberId
+		});
+		
+		ajax.then(function(value){
+			$scope.count = value.data;
+			if($scope.count != 0){
+				$scope.a = true;
+				$scope.b = false;
+			}else{
+				$scope.a = false;
+				$scope.b = true;
+			}
+		}, function(reason){
+			alert("실패");
+		})
+	}
+	
+	
 });

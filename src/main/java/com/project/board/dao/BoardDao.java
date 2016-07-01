@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.project.board.model.Board;
+import com.project.comment.model.Comment;
 import com.project.util.Pagination;
 
 @Repository
@@ -60,5 +61,9 @@ public class BoardDao {
 	
 	public void insertRecommand(Board board){
 		sqlSession.insert("com.project.board.insertRecommand",board);
+	}
+	
+	public int selectReplyCount(Comment comment){
+		return sqlSession.selectOne("com.project.comment.selectReplyCount",comment);
 	}
 }

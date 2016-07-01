@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <html lang="ko">
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>B I T</title>
 </head>
@@ -25,6 +26,7 @@
 	</div>
 </div>
 </div>
+
                  <!--    <div class="col-md-6" style="display:none;">
                         <style>
 	#foixmthurewlsqcdvgnyjkp { margin-right:-10px; margin-bottom:-10px; }
@@ -213,6 +215,5 @@
                                 </div>
         </div>
     </div>
-
 </body>
 </html>

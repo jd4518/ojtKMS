@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.member.model.Member;
+import com.project.member.service.MemberIdGetService;
 import com.project.member.service.MemberJoinService;
 
 @Controller
@@ -21,6 +22,9 @@ public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	@Autowired
 	MemberJoinService memberJoinService;
+	
+	@Autowired
+	MemberIdGetService memberIdGetService;
 	
 	@RequestMapping(value="/memberMain.do")
 	public String memberMain(){
@@ -53,4 +57,12 @@ public class MemberController {
  
 
 	}
+	@RequestMapping(value="/memberIdGet.do", method=RequestMethod.POST)
+	@ResponseBody
+	public int memberIdGet(@RequestBody Member member){
+		int count = memberIdGetService.memberIdCheck(member);
+		return count;
+		
+	}
+	
 }

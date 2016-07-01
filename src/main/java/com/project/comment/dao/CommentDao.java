@@ -22,4 +22,8 @@ public class CommentDao {
 	public void postComment(Comment comment){
 		sqlSession.insert("com.project.comment.insertComment",comment);
 	}
+	
+	public void deleteComment(Comment comment){
+		sqlSession.update("com.project.comment.deleteComment", comment);
+	}
 }

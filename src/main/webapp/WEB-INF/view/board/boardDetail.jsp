@@ -1,9 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+    <%
+	request.setCharacterEncoding("utf-8");
+%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <title>Insert title here</title>
 </head>
 <body>
@@ -22,8 +26,16 @@
             <th>등록일</th>
             <td>{{board.boardRegDate | date : "medium"}}</td>
          </tr>
+         	<tr >
+      		<th colspan="1" style="text-align: center; font-weight: bold; vertical-align: middle;">첨부파일 </th>
+      		<td colspan="1" ><div data-ng-repeat = "f in files"><a class="aTag"
+      		href="/Project/board/fileDown.do?fileRealName={{f.FILES_REALNAME}}&fileFakeName={{f.FILES_FAKENAME}}">{{f.FILES_REALNAME}}
+      		<input type="hidden" data-ng-model="fileNa" ></a></div>
+      		</td>
+      	</tr>
       </thead>
       <tbody class="btable">
+      
          <tr >
             <td colspan="6">{{board.boardContent}}</td>
          </tr>
@@ -34,15 +46,16 @@
          	<td>
          		<div>{{c.MEMBER_ID}}</div>
          	</td>
-         	<td colspan="5"> 
-			    <div class="col-lg-10">
-				 <div >
+         	<td colspan="4"> 
+			    <div class="col-lg-6">
 				  <label class="control-label">{{c.REPLY_CONTENT}}</label>
-				  <div align="right">
+				 </div>
+				  <div class="col-lg-6" align="right">
 				  {{c.REPLY_REGDATE | date : "yyyy-MM-dd hh:mm:ss a"}}
 				  </div>
-				 </div>
-				 </div>
+			 </td>
+			 <td >
+			 	<div align="right" class="col-lg-12" data-ng-show="${member.memberId }==c.MEMBER_ID"><a   data-ng-click="replyDelete(c.REPLY_NO)" class="btn btn-warning">삭제</a></div>
 			 </td>
          </tr>
 
@@ -60,10 +73,12 @@
 		<div>내용을 입력해주세요.</div>
 		</span>
 		</div>
-	   <div class="help-block with-errors"></div>
+	   <div class="help-block with-errors">
 	   <div class="col-lg-3" align="right"><a   data-ng-click="reply('${member.memberId}')" class="btn btn-primary"  
-	   data-ng-disabled="detailForm.content.$invalid">입력</a> <a class="custom btn-custom" data-ng-click="recommand('${member.memberId}')"
+	   data-ng-disabled="detailForm.content.$invalid">입력</a>
+	    <a class="custom btn-custom" data-ng-click="recommand('${member.memberId}')"
 	   >좋아요 <i class="fa fa-heart"  aria-hidden="true"> ({{board.boardRecommandPoint}})</i></a></div>
+	</div>
 	</div>
 	<table class="table"  >
 	<tr>

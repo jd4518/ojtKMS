@@ -7,38 +7,10 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!-- angularJs -->	
 
-<!-- angularJs -->
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-file-upload/2.3.4/angular-file-upload.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-file-upload/2.3.4/angular-file-upload.js.map"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-file-upload/2.3.4/angular-file-upload.min.js"></script>
 
-<script
-	src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-animate.min.js"></script>
-<script
-	src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-cookies.min.js"></script>
-<script
-	src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-resource.min.js"></script>
-<script
-	src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>
-<script
-	src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.js"></script>
-<script
-	src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-sanitize.min.js"></script>
-<script
-	src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-touch.min.js"></script>
-	<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-touch.js"></script>
-		<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.3.3/ui-bootstrap.js"></script>
-		<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.3.3/ui-bootstrap-tpls.js"></script>
-	
 <!-- cdn -->
-<script src='http://codepen.io/andytran/pen/vLmRVp.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-hover-dropdown/2.2.1/bootstrap-hover-dropdown.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-hover-dropdown/2.2.1/bootstrap-hover-dropdown.min.js'></script>
 
 
 <link
@@ -47,6 +19,7 @@
 <!-- CSS -->
 <c:url var="bootstrap_css" value="/framework/css/bootstrap.css" />
 <c:url var="bootstrap_min_css" value="/framework/css/bootstrap.min.css" />
+<c:url var="fileinput_css" value="/framework/css/fileinput.css" />
 <c:url var="landing_page_css" value="/framework/css/landing-page.css" />
 <c:url var="font_awesome_css"
 	value="/framework/font-awesome/css/font-awesome.css" />
@@ -55,6 +28,7 @@
 
 <link rel="stylesheet" href="${bootstrap_css}" />
 <link rel="stylesheet" href="${bootstrap_min_css}" />
+<link rel="stylesheet" href="${fileinput_css}" />
 <link rel="stylesheet" href="${landing_page_css}" />
 <link rel="stylesheet" href="${font_awesome_css}" />
 <link rel="stylesheet" href="${reset_css}" />
@@ -62,9 +36,13 @@
 
 
 <!-- JavaScripte -->
-<c:url var="bootstrap_js" value="/framework/js/bootstrap.js" />
 <c:url var="jquery_js" value="/framework/js/jquery.js" />
-<c:url var="mainController_js" value="/js/mainController.js" />
+<c:url var="bootstrap_js" value="/framework/js/bootstrap.js" />
+<c:url var="fileinput_js" value="/framework/js/fileinput.js" />
+<c:url var="angular_js" value="/framework/js/angular.js" />
+<c:url var="angular_route_js" value="/framework/js/angular-route.js" />
+<c:url var="ui_bootstrap_min_js" value="/framework/js/ui-bootstrap.min.js" />
+ <c:url var="mainController_js" value="/js/mainController.js" />
 <c:url var="joinController_js" value="/js/joinController.js" />
 <c:url var="loginController_js" value="/js/loginController.js" />
 <c:url var="boardMainController_js" value="/js/boardMainController.js" />
@@ -73,11 +51,16 @@
 <c:url var="boardInsertController_js" value="/js/boardInsertController.js" />
 <c:url var="boardModifyController_js" value="/js/boardModifyController.js" />
 <c:url var="boardDeleteController_js" value="/js/boardDeleteController.js" />
+
 <!-- URL경로 설정 -->
 
 
-<script type="text/javascript" src="${bootstrap_js}"></script>
 <script type="text/javascript" src="${jquery_js}"></script>
+<script type="text/javascript" src="${bootstrap_js}"></script>
+<script type="text/javascript" src="${fileinput_js}"></script>
+<script type="text/javascript" src="${angular_js}"></script>
+<script type="text/javascript" src="${angular_route_js}"></script>
+<script type="text/javascript" src="${ui_bootstrap_min_js}"></script>
 <script type="text/javascript" src="${mainController_js}"></script>
 <script type="text/javascript" src="${joinController_js}"></script>
 <script type="text/javascript" src="${loginController_js}"></script>
@@ -87,3 +70,13 @@
 <script type="text/javascript" src="${boardInsertController_js}"></script>
 <script type="text/javascript" src="${boardModifyController_js}"></script>
 <script type="text/javascript" src="${boardDeleteController_js}"></script>
+
+	<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-touch.js"></script>
+	<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-animate.js"></script>
+	
+<script src='http://codepen.io/andytran/pen/vLmRVp.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-hover-dropdown/2.2.1/bootstrap-hover-dropdown.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-hover-dropdown/2.2.1/bootstrap-hover-dropdown.min.js'></script>
+

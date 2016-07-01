@@ -1,5 +1,7 @@
 package com.project.file.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -20,4 +22,9 @@ public class FileDao {
 		sqlSession.insert("com.project.file.insertFile",files);
 	}
 	
+	public List<Files> selectFileList(Files files){
+		
+		return sqlSession.selectList("com.project.file.selectFileList", files);
+		
+	}
 }

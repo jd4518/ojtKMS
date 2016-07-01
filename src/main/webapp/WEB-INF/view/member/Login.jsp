@@ -29,9 +29,14 @@
     </form>
   </div>
 
-  <div class="cta"><a href="http://andytran.me">Forgot your password?</a></div>
+  <div class="cta"><a onclick="findIdPass();" class="aTag">Forgot your id or password?</a></div>
 </div>
       </article>
-	
+	<script type="text/javascript">
+	function findIdPass(){
+		var popUp = window.open("/Project/find/findMain.do","findMain","width=500, height=300, left=600, top=270");
+		popUp.focus();
+	}
+	</script>
 </body>
 </html>

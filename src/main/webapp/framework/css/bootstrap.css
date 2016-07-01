@@ -7070,10 +7070,13 @@ button.close {
 .aTag.focus {
 	color: #000;
   text-decoration:none;
+  cursor: pointer;
 }
 .aTag:hover {
  color: #000;
-  text-decoration:none;	
+  text-decoration:none;
+  cursor: pointer;	
+  font-weight: bold;
 }
 .white{
 	color: #FFFFFF;

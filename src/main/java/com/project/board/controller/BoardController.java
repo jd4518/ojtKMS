@@ -5,24 +5,25 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.board.model.Board;
 import com.project.board.service.BoardDeleteService;
 import com.project.board.service.BoardDetailService;
+import com.project.board.service.BoardFileService;
 import com.project.board.service.BoardHitService;
 import com.project.board.service.BoardInsertService;
 import com.project.board.service.BoardListService;
@@ -31,9 +32,11 @@ import com.project.board.service.RecommandService;
 import com.project.category.service.CategoryService;
 import com.project.comment.model.Comment;
 import com.project.comment.service.CommentAddService;
+import com.project.comment.service.CommentDeleteService;
 import com.project.comment.service.CommentListService;
+import com.project.file.model.Files;
 import com.project.menu.service.MenuService;
-import com.project.util.FileUpload;
+import com.project.util.FileDownload;
 
 @Controller
 @RequestMapping(value = "/board")
@@ -52,6 +55,9 @@ public class BoardController {
 	
 	@Autowired
 	BoardDetailService boardDetailService;
+	
+	@Autowired
+	BoardFileService boardFileService;
 	
 	@Autowired
 	BoardInsertService boardInsertService;
@@ -75,54 +81,13 @@ public class BoardController {
 	CommentAddService commentAddService;
 	
 	@Autowired
-	@Qualifier("fileUpload")
-	FileUpload fileUpload;
+	CommentDeleteService commentDeleteService;
+	
+	@Autowired
+	FileDownload fileDownload;
 	
 	
 
-public void setMenuService(MenuService menuService) {
-		this.menuService = menuService;
-	}
-
-	public void setCategoryService(CategoryService categoryService) {
-		this.categoryService = categoryService;
-	}
-
-	public void setBoardService(BoardListService boardService) {
-		this.boardService = boardService;
-	}
-
-	public void setBoardDetailService(BoardDetailService boardDetailService) {
-		this.boardDetailService = boardDetailService;
-	}
-
-	public void setBoardInsertService(BoardInsertService boardInsertService) {
-		this.boardInsertService = boardInsertService;
-	}
-
-	public void setBoardModifyService(BoardModifyService boardModifyService) {
-		this.boardModifyService = boardModifyService;
-	}
-
-	public void setBoardDeleteService(BoardDeleteService boardDeleteService) {
-		this.boardDeleteService = boardDeleteService;
-	}
-
-	public void setRecommandService(RecommandService recommandService) {
-		this.recommandService = recommandService;
-	}
-
-	public void setBoardHitService(BoardHitService boardHitService) {
-		this.boardHitService = boardHitService;
-	}
-
-	public void setCommentListService(CommentListService commentListService) {
-		this.commentListService = commentListService;
-	}
-
-	public void setCommentAddService(CommentAddService commentAddService) {
-		this.commentAddService = commentAddService;
-	}
 
 	//		angular를 사용하기위한 메인 호출
 	@RequestMapping(value = "/boardMain.do")
@@ -194,14 +159,15 @@ public void setMenuService(MenuService menuService) {
 	  @RequestMapping(value="/boardDetail/{boardNo:[0-9]+}{categoryNo:[0-9]+}x.do",method=RequestMethod.GET)
 	   @ResponseBody
 	   public Map<String, Object> getDetailBoard(@PathVariable int boardNo,@PathVariable int categoryNo){
-	      System.out.println("catecon"+boardNo);
-	      System.out.println("page"+categoryNo);
 	      Map<String, Object> map = new HashMap<String, Object>();
+	      
 	      Board b = boardDetailService.getBoardDetail(boardNo,categoryNo);
 	      List<Comment> comment = commentListService.getCommentList(boardNo, categoryNo);
+	      List<Files>   files   = boardFileService.getboardFileList(boardNo, categoryNo);
 	      
 	      map.put("b", b);
 	      map.put("comment", comment);
+	      map.put("files", files);
 	      
 	      
 	      return map;
@@ -228,13 +194,19 @@ public void setMenuService(MenuService menuService) {
 		      return modelAndView;
 	}
 	
-/*	@RequestMapping(value="/fileUp.do",method=RequestMethod.POST)
+	@RequestMapping(value="/fileDown.do",method=RequestMethod.GET)
 	@ResponseBody
-	public void fileUpload(HttpServletRequest request) throws Exception{
+	public void fileDown(@RequestParam String fileRealName,@RequestParam String fileFakeName, HttpServletRequest request, HttpServletResponse response ) throws Exception{
+		response.setContentType("text/html;charset=UTF-8");
+
+		String originalFile = fileRealName;
+		String storedFile 	= fileFakeName;
+		System.out.println(originalFile);
+		System.out.println(storedFile);
+		String filePath = request.getSession().getServletContext().getRealPath("/fileUpload");
+		fileDownload.downloadFiles(originalFile, storedFile, filePath, response, request);
 		
-			boardInsertService.insertBoard(board,request);
-		
-	}*/
+	}
 	
 	@RequestMapping(value="/boardModify.do",method=RequestMethod.PUT)
 	@ResponseBody
@@ -273,5 +245,12 @@ public void setMenuService(MenuService menuService) {
 		int result = recommandService.recommandBoard(board);
 		
 		return result;
+	}
+	
+	@RequestMapping(value="/commentDelete.do",method=RequestMethod.PUT)
+	@ResponseBody
+	public void commentDelete(@RequestBody Comment comment){
+		commentDeleteService.deleteComment(comment);
+		
 	}
 }

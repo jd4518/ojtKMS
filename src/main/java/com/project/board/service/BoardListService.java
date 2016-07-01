@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.board.dao.BoardDao;
 import com.project.board.model.Board;
+import com.project.comment.model.Comment;
 import com.project.util.Pagination;
 
 @Service
@@ -30,6 +31,13 @@ public class BoardListService {
 		System.out.println(pageNo);
 		List<Board> board = boardDao.selectBoardList(page);
 		
+		Comment comment = new Comment();
+		for(int i = 0 ; i<board.size(); i++){
+			comment.setBoardNo(board.get(i).getBoardNo());
+			comment.setCategoryNo(board.get(i).getCategoryNo());
+			int num = boardDao.selectReplyCount(comment);
+			board.get(i).setNum(num);
+		}
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		map.put("board", board);

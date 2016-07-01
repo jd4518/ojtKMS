@@ -95,7 +95,8 @@ body {
   display: block;
   width: 100%;
   border: 1px solid #d9d9d9;
-  margin: 0 0 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   padding: 10px 15px;
   box-sizing: border-box;
   font-wieght: 400;

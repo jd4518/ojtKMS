@@ -22,12 +22,13 @@
       </thead>
       <tbody style="background-color:#ffffff">
          <tr data-ng-repeat="b in list.board">
-            <td>{{b.RN}}</td>
-            <td><a class="aTag" href="#/boardDetail/{{b.BOARD_NO}}{{categoryNo}}{{menuNo}}">{{b.BOARD_TITLE}}</a></td>
-            <td>{{b.MEMBER_ID}}</td>
-            <td>{{b.MEMBER_NAME}}</td>
-            <td>{{b.BOARD_HIT}}</td>
-            <td>{{b.BOARD_RECOMMAND}}</td>
+            <td>{{b.rn}}</td>
+            <td><a class="aTag" href="#/boardDetail/{{b.boardNo}}{{categoryNo}}{{menuNo}}">{{b.boardTitle}}
+             <span style="color: #A566FF" data-ng-show="{{b.num}}!=0"> <i class="fa fa-comment-o" aria-hidden="true"></i> {{b.num}}</span></a></td>
+            <td>{{b.memberId}}</td>
+            <td>{{b.memberName}}</td>
+            <td>{{b.boardHit}}</td>
+            <td>{{b.boardRecommandPoint}}</td>
          </tr>
          <tr><td class="text-center" colspan="4" >
          <div 

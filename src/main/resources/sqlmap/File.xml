@@ -23,4 +23,20 @@
 	)
 </insert>
 
+<select id="selectFileList" parameterType="Files" resultType="java.util.HashMap">
+	select 
+		files_no,
+		menu_no,
+		category_no,
+		board_no,
+		files_realname,
+		files_fakename
+	from
+		files
+	where
+		category_no = #{categoryNo, jdbcType=INTEGER}
+	and
+		board_no = #{boardNo, jdbcType=INTEGER}
+</select>
+
 </mapper>

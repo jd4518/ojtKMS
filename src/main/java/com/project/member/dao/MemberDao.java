@@ -43,4 +43,21 @@ public class MemberDao {
 		System.out.println(member.getAuthority());
 		return member;
 	}
+	
+	public String findMember(Member member){
+		
+		return sqlSession.selectOne("com.project.member.findMemberId", member);
+	}
+	
+	public int findPass(Member member){
+		return sqlSession.selectOne("com.project.member.findMemberPw", member);
+	}
+	
+	public int updateMemberPass(Member member){
+		return sqlSession.update("com.project.member.updateMemberPass", member);
+	}
+	
+	public int memberIdCheck(Member member){
+		return sqlSession.selectOne("com.project.member.memberIdCheck", member);
+	}
 }

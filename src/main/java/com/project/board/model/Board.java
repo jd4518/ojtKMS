@@ -10,6 +10,8 @@ public class Board {
 	private int memberNo;
 	private int boardHit;
 	private int boardRecommandPoint;
+	private int num;
+	private int rn;
 	private String memberId;
 	private String memberName;
 	private String boardTitle;
@@ -47,6 +49,13 @@ public class Board {
 	}
 	public int getMemberNo() {
 		return memberNo;
+	}
+	
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
 	}
 	public void setMemberNo(int memberNo) {
 		this.memberNo = memberNo;
@@ -110,6 +119,12 @@ public class Board {
 	}
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
+	}
+	public int getRn() {
+		return rn;
+	}
+	public void setRn(int rn) {
+		this.rn = rn;
 	}
 	
 	
