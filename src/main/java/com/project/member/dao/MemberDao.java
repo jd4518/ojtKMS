@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.project.member.controller.MemberController;
 import com.project.member.model.Member;
+import com.project.util.Pagination;
 
 @Repository
 public class MemberDao {
@@ -37,6 +38,7 @@ public class MemberDao {
 		logger.info("sMd start");
 		logger.info(memberName);
 		System.out.println(memberName);
+		System.out.println("pwcheck ========== :" + memberName);
 		Member  member = sqlSession.selectOne("com.project.member.memberDetailSelect", memberName);
 		System.out.println(member.getMemberId());
 		System.out.println(member.getMemberPassword());
@@ -57,7 +59,67 @@ public class MemberDao {
 		return sqlSession.update("com.project.member.updateMemberPass", member);
 	}
 	
+	public int changeMemberPass(Member member){
+		return sqlSession.update("com.project.member.changeMemberPass", member);
+	}
+	
 	public int memberIdCheck(Member member){
 		return sqlSession.selectOne("com.project.member.memberIdCheck", member);
+	}
+	
+	public int memberInfoUp(Member member){
+		return sqlSession.update("com.project.member.memberInfoUp", member);
+	}
+	
+	public List<Member> selectMemberList(Pagination page){
+		return sqlSession.selectList("com.project.member.selectMemberList", page);
+	}
+	
+	public void memberLastLogin(String id){
+		sqlSession.update("com.project.member.memberLastLogin", id);
+	}
+	
+	public int memberTotalCount(){
+		return sqlSession.selectOne("com.project.member.memberTotalCount");
+	}
+	
+	public void memberDelete(String memberId){
+		sqlSession.update("com.project.member.memberDelete", memberId);
+	}
+	
+	public void memberUpgrade(String memberId){
+		sqlSession.update("com.project.member.memberUpgrade", memberId);
+	}
+	
+	public void memberDowngrade(String memberId){
+		sqlSession.update("com.project.member.memberDowngrade", memberId);
+	}
+	
+	public void memberWarning(String memberId){
+		sqlSession.update("com.project.member.memberWarning", memberId);
+	}
+	
+	public void memberStop(String memberId){
+		sqlSession.update("com.project.member.memberStop", memberId);
+	}
+	
+	public void memberSave(String memberId){
+		sqlSession.update("com.project.member.memberSave", memberId);
+	}
+	
+	public int selectRpoint(String memberId){
+		return sqlSession.selectOne("com.project.member.selectRpoint", memberId);
+	}
+	
+	public void memberWarningThree(String memberId){
+		sqlSession.update("com.project.member.memberWarningThree", memberId);
+	}
+	
+	public int selectSpoint(String memberId){
+		return sqlSession.selectOne("com.project.member.selectSpoint", memberId);
+	}
+	
+	public void updateAuthority(Member member){
+		sqlSession.update("com.project.member.updateAuthority", member);
 	}
 }

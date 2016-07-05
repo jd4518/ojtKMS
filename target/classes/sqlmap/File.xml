@@ -23,6 +23,29 @@
 	)
 </insert>
 
+<insert id="insertReportFile" parameterType="Files">
+	insert into files
+	(
+		files_no,
+		menu_no,
+		category_no,
+		board_no,
+		stop_no,
+		files_realname,
+		files_fakename
+	)
+	values
+	(
+			seq_files_files_no.nextval,
+			#{menuNo, jdbcType=INTEGER},
+			#{categoryNo, jdbcType=INTEGER},
+			#{boardNo, jdbcType=INTEGER},
+			(select max(stop_no) from stop),
+			#{fileRealName, jdbcType=VARCHAR},
+			#{fileFakeName, jdbcType=VARCHAR}
+	)
+</insert>
+
 <select id="selectFileList" parameterType="Files" resultType="java.util.HashMap">
 	select 
 		files_no,
@@ -37,6 +60,22 @@
 		category_no = #{categoryNo, jdbcType=INTEGER}
 	and
 		board_no = #{boardNo, jdbcType=INTEGER}
+	and 
+		stop_no = NULL
 </select>
 
+<select id="selectReportFileList" parameterType="int" resultType="Files">
+	select 
+		files_no as fileNo,
+		menu_no  as menuNo,
+		category_no as categoryNo,
+		board_no as boardNo,
+		files_realname as fileRealName,
+		files_fakename as fileFakeName,
+		stop_no as stopNo
+	from
+		files
+	where
+		stop_no = #{stopNo, jdbcType=INTEGER}
+</select>
 </mapper>

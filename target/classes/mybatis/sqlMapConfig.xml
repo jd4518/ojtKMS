@@ -1,24 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration
-  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-
 	<typeAliases>
-		<typeAlias alias="Admin" type="com.project.admin.model.Admin" />
-		<typeAlias alias="Board" type="com.project.board.model.Board" />
-		<typeAlias alias="Category" type="com.project.category.model.Category" />
-		<typeAlias alias="Files" type="com.project.file.model.Files" />
-		<typeAlias alias="Member" type="com.project.member.model.Member" />
-		<typeAlias alias="Menu" type="com.project.menu.model.Menu" />
-		<typeAlias alias="Stop" type="com.project.stop.model.Stop" />
-		<typeAlias alias="Comment" type="com.project.comment.model.Comment" />
+		<typeAlias alias="Accused" type="com.project.accused.model.Accused"/>
+		<typeAlias alias="Admin" type="com.project.admin.model.Admin"/>
+		<typeAlias alias="Board" type="com.project.board.model.Board"/>
+		<typeAlias alias="Category" type="com.project.category.model.Category"/>
+		<typeAlias alias="Comment" type="com.project.comment.model.Comment"/>
+		<typeAlias alias="Files" type="com.project.file.model.Files"/>
+		<typeAlias alias="Member" type="com.project.member.model.Member"/>
+		<typeAlias alias="Menu" type="com.project.menu.model.Menu"/>
+		<typeAlias alias="Stop" type="com.project.stop.model.Stop"/>
 	</typeAliases>
-
 </configuration>
-
-
-
-
-
 

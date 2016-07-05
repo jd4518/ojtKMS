@@ -66,4 +66,12 @@ public class BoardDao {
 	public int selectReplyCount(Comment comment){
 		return sqlSession.selectOne("com.project.comment.selectReplyCount",comment);
 	}
+	
+	public List<Board> selectRecentBoard(){
+		return sqlSession.selectList("com.project.board.selectRecentBoard");
+	}
+	
+	public List<Board> selectTopRecommandBoard(){
+		return sqlSession.selectList("com.project.board.selectTopRecommandBoard");
+	}
 }

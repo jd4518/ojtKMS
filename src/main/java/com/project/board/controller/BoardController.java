@@ -27,6 +27,7 @@ import com.project.board.service.BoardFileService;
 import com.project.board.service.BoardHitService;
 import com.project.board.service.BoardInsertService;
 import com.project.board.service.BoardListService;
+import com.project.board.service.BoardMainService;
 import com.project.board.service.BoardModifyService;
 import com.project.board.service.RecommandService;
 import com.project.category.service.CategoryService;
@@ -36,6 +37,8 @@ import com.project.comment.service.CommentDeleteService;
 import com.project.comment.service.CommentListService;
 import com.project.file.model.Files;
 import com.project.menu.service.MenuService;
+import com.project.stop.model.Stop;
+import com.project.stop.service.StopInsertService;
 import com.project.util.FileDownload;
 
 @Controller
@@ -52,6 +55,9 @@ public class BoardController {
 	
 	@Autowired
 	BoardListService boardService;
+	
+	@Autowired
+	BoardMainService boardMainService;
 	
 	@Autowired
 	BoardDetailService boardDetailService;
@@ -85,6 +91,9 @@ public class BoardController {
 	
 	@Autowired
 	FileDownload fileDownload;
+	
+	@Autowired
+	StopInsertService stopInsertService;
 	
 	
 
@@ -133,6 +142,24 @@ public class BoardController {
 	public String getBoardDeleteView() {
 
 		return "board/boardDelete";
+	}
+	
+	@RequestMapping(value="/memberInfo.do")
+	public String memberInfo(){
+		
+		return "board/memberInfo";
+	}
+	
+	@RequestMapping(value="/changePassword.do")
+	public String changePassword(){
+	      
+		return "board/changePassword";
+	}
+	
+	@RequestMapping(value="/reportInsert.do")
+	public String reportInsert(){
+	      
+		return "board/reportInsert";
 	}
 	
 //	메뉴의 저보를 database에서 가져온다.
@@ -203,6 +230,20 @@ public class BoardController {
 		String storedFile 	= fileFakeName;
 		System.out.println(originalFile);
 		System.out.println(storedFile);
+		String filePath = request.getSession().getServletContext().getRealPath("/rfileUpload");
+		fileDownload.downloadFiles(originalFile, storedFile, filePath, response, request);
+		
+	}
+	
+	@RequestMapping(value="/reportFileDown.do",method=RequestMethod.GET)
+	@ResponseBody
+	public void reportFileDown(@RequestParam String fileRealName,@RequestParam String fileFakeName, HttpServletRequest request, HttpServletResponse response ) throws Exception{
+		response.setContentType("text/html;charset=UTF-8");
+
+		String originalFile = fileRealName;
+		String storedFile 	= fileFakeName;
+		System.out.println(originalFile);
+		System.out.println(storedFile);
 		String filePath = request.getSession().getServletContext().getRealPath("/fileUpload");
 		fileDownload.downloadFiles(originalFile, storedFile, filePath, response, request);
 		
@@ -252,5 +293,32 @@ public class BoardController {
 	public void commentDelete(@RequestBody Comment comment){
 		commentDeleteService.deleteComment(comment);
 		
+	}
+	
+	@RequestMapping(value="/reportWrite.do")
+	public ModelAndView reportWrite(@ModelAttribute("stop")  Stop stop, HttpServletRequest request) throws Exception{
+			System.out.println(stop.getBoardNo());
+			System.out.println(stop.getsMemberId());
+			 stopInsertService.insertReport(stop, request);
+			  String viewName = "redirect:/board/boardMain.do#/boardList/"+stop.getCategoryNo()+stop.getMenuNo();
+		      
+		      ModelAndView modelAndView = new ModelAndView();
+		      modelAndView.setViewName(viewName);
+		      
+		      return modelAndView;
+	}
+	
+	@RequestMapping(value="/selectRecent.do")
+	@ResponseBody
+	public List<Board> selectRecent(){
+		List<Board> list = boardMainService.getRecentBoard();
+		return list;
+	}
+	
+	@RequestMapping(value="/selectTopRecommand.do")
+	@ResponseBody
+	public List<Board> selectTopRecommand(){
+		List<Board> list = boardMainService.getTopRecommandBoard();
+		return list;
 	}
 }

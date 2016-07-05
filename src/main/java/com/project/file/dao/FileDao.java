@@ -27,4 +27,14 @@ public class FileDao {
 		return sqlSession.selectList("com.project.file.selectFileList", files);
 		
 	}
+	
+	public void insertReportFile(Files files){
+		sqlSession.insert("com.project.file.insertReportFile",files);
+	}
+	
+	public List<Files> selectReportFileList(int files){
+		
+		return sqlSession.selectList("com.project.file.selectReportFileList", files);
+		
+	}
 }

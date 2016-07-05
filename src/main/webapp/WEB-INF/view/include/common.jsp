@@ -51,6 +51,11 @@
 <c:url var="boardInsertController_js" value="/js/boardInsertController.js" />
 <c:url var="boardModifyController_js" value="/js/boardModifyController.js" />
 <c:url var="boardDeleteController_js" value="/js/boardDeleteController.js" />
+<c:url var="memberInfoController_js" value="/js/memberInfoController.js" />
+<c:url var="changePasswordController_js" value="/js/changePasswordController.js" />
+<c:url var="reportInsertController_js" value="/js/reportInsertController.js" />
+<c:url var="reportListController_js" value="/js/reportListController.js" />
+<c:url var="memberListController_js" value="/js/memberListController.js" />
 
 <!-- URL경로 설정 -->
 
@@ -70,6 +75,11 @@
 <script type="text/javascript" src="${boardInsertController_js}"></script>
 <script type="text/javascript" src="${boardModifyController_js}"></script>
 <script type="text/javascript" src="${boardDeleteController_js}"></script>
+<script type="text/javascript" src="${memberInfoController_js}"></script>
+<script type="text/javascript" src="${changePasswordController_js}"></script>
+<script type="text/javascript" src="${reportInsertController_js}"></script>
+<script type="text/javascript" src="${reportListController_js}"></script>
+<script type="text/javascript" src="${memberListController_js}"></script>
 
 	<script
 	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-touch.js"></script>

@@ -38,6 +38,8 @@ values
 		member
 	where 
 		member_id = #{memberName , jdbcType=VARCHAR}
+	and
+		member_flag = 'Y'
 </select>
 
 <select id="findMemberId" parameterType="Member" resultType="String">
@@ -75,6 +77,15 @@ values
 		member_email = #{memberEmail , jdbcType=VARCHAR}	
 </update>
 
+<update id="changeMemberPass" parameterType="Member">
+	update 
+		member
+	set
+		member_password = #{memberPassword, jdbcType=VARCHAR}
+	where
+		member_id = #{memberId , jdbcType=VARCHAR}
+</update>
+
 <select id="memberIdCheck" parameterType="Member" resultType="int">
 	select
 		count(*)
@@ -83,4 +94,163 @@ values
 	where
 		member_id = #{memberId , jdbcType=VARCHAR} 
 </select>
+
+<update id="memberInfoUp" parameterType="Member">
+	update
+		member
+	 <set>
+         <trim suffixOverrides=",">
+            <if test="memberName != null">
+               member_name = #{memberName , jdbcType=VARCHAR},
+            </if>
+            <if test="memberEmail != null">
+               member_email = #{memberEmail , jdbcType=VARCHAR}
+            </if>
+         </trim>
+      </set>
+	where
+		member_id = #{memberId , jdbcType=VARCHAR}
+			
+</update>
+
+<select id="selectMemberList" parameterType="com.project.util.Pagination" resultType="Member">
+select
+		h.*
+	from
+	(
+		select 
+			ROWNUM r, t.* 
+		from 
+		(
+			select 
+				ROWNUM rn, e.* 
+			from 
+			(
+				select
+					member_id as memberId,
+					member_name as memberName,
+					member_email as memberEmail,
+					authority as authority,
+					member_spoint as memberStopPoint,
+					member_hire_date as memberHireDate,
+					member_last_login as memberLastLogin
+				from
+					member
+				where
+					member_flag = 'Y'
+				order by member_no
+			) e order by rn desc
+		)t
+	)h 
+	where r between #{start} and #{end}
+
+</select>
+
+<update id="memberLastLogin" parameterType="String">
+	update
+		member
+	set
+		member_last_login = sysdate
+	where
+		member_id = #{id , jdbcType=VARCHAR}
+</update>
+
+<select id="memberTotalCount" resultType="int">
+	select
+		count(*)
+	from
+		member
+</select>
+
+<update id="memberDelete" parameterType="String">
+	update
+		member
+	set
+		member_flag = 'N'
+	where
+		member_id = #{memberId , jdbcType=VARCHAR}
+</update>
+
+<update id="memberUpgrade" parameterType="String">
+	update
+		member
+	set
+		authority = 'ROLE_MANAGER'
+	where
+		member_id = #{memberId , jdbcType=VARCHAR}
+</update>
+
+<update id="memberDowngrade" parameterType="String">
+	update 
+		member
+	set
+		authority = 'ROLE_USER'
+	where
+		member_id = #{memberId , jdbcType=VARCHAR}
+</update>
+
+<update id="memberWarning" parameterType="String">
+	update
+		member
+	set
+		member_rpoint = member_rpoint+1
+	where
+		member_id = #{memberId , jdbcType=VARCHAR}
+</update>
+
+<update id="memberStop" parameterType="String">
+	update
+		member
+	set
+		member_spoint = member_spoint+1
+	where
+		member_id = #{memberId , jdbcType=VARCHAR}
+</update>
+
+<update id="memberSave" parameterType="String">
+	update
+		member
+	set
+		member_spoint = 0,
+		authority = 'ROLE_USER'
+	where
+		member_id = #{memberId , jdbcType=VARCHAR}	
+</update>
+
+<select id="selectRpoint" parameterType="String" resultType="int">
+	select
+		member_rpoint
+	from
+		member
+	where
+		member_id = #{memberId , jdbcType=VARCHAR}	
+</select>
+
+<update id="memberWarningThree" parameterType="String">
+	update
+		member
+	set
+		member_rpoint = 0
+	where
+		member_id = #{memberId , jdbcType=VARCHAR}
+</update>
+
+<select id="selectSpoint" parameterType="String" resultType="int">
+	select
+		member_spoint
+	from
+		member
+	where
+		member_id = #{memberId , jdbcType=VARCHAR}	
+</select>
+
+<update id="updateAuthority" parameterType="Member">
+	update
+		member
+	set
+		authority = #{authority , jdbcType=VARCHAR}
+	where
+		member_id = #{memberId , jdbcType=VARCHAR}	
+
+</update>
 </mapper>

@@ -1,12 +1,22 @@
 package com.project.stop.model;
 
+import java.util.Date;
+
 public class Stop {
-	
+
 	private int stopNo;
 	private int memberNo;
-	private String startDate;
-	private String endDate;
-	private String sotpReason;
+	private int menuNo;
+	private int categoryNo;
+	private int boardNo;
+	private int rn;
+	private Date startDate;
+	private Date endDate;
+	private String stopReason;
+	private String sMemberId;
+	private String wMemberId;
+	private String stopTitle;
+	private String boardTitle;
 	public int getStopNo() {
 		return stopNo;
 	}
@@ -19,24 +29,74 @@ public class Stop {
 	public void setMemberNo(int memberNo) {
 		this.memberNo = memberNo;
 	}
-	public String getStartDate() {
+	public int getMenuNo() {
+		return menuNo;
+	}
+	public void setMenuNo(int menuNo) {
+		this.menuNo = menuNo;
+	}
+	public int getCategoryNo() {
+		return categoryNo;
+	}
+	public void setCategoryNo(int categoryNo) {
+		this.categoryNo = categoryNo;
+	}
+	public int getBoardNo() {
+		return boardNo;
+	}
+	public void setBoardNo(int boardNo) {
+		this.boardNo = boardNo;
+	}
+	public int getRn() {
+		return rn;
+	}
+	public void setRn(int rn) {
+		this.rn = rn;
+	}
+	
+	public Date getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(String startDate) {
+	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
-	public String getEndDate() {
+	public Date getEndDate() {
 		return endDate;
 	}
-	public void setEndDate(String endDate) {
+	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
-	public String getSotpReason() {
-		return sotpReason;
+	public String getStopReason() {
+		return stopReason;
 	}
-	public void setSotpReason(String sotpReason) {
-		this.sotpReason = sotpReason;
+	public void setStopReason(String stopReason) {
+		this.stopReason = stopReason;
 	}
+	public String getsMemberId() {
+		return sMemberId;
+	}
+	public void setsMemberId(String sMemberId) {
+		this.sMemberId = sMemberId;
+	}
+	public String getwMemberId() {
+		return wMemberId;
+	}
+	public void setwMemberId(String wMemberId) {
+		this.wMemberId = wMemberId;
+	}
+	public String getStopTitle() {
+		return stopTitle;
+	}
+	public void setStopTitle(String stopTitle) {
+		this.stopTitle = stopTitle;
+	}
+	public String getBoardTitle() {
+		return boardTitle;
+	}
+	public void setBoardTitle(String boardTitle) {
+		this.boardTitle = boardTitle;
+	}
+
 	
-	
+
 }

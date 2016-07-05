@@ -44,11 +44,11 @@
 		<constructor-arg ref="sqlSessionFactory" /> 
 	</bean>
 
-	<bean id = "transactionManager" class = "org.springframework.jdbc.datasource.DataSourceTransactionManager">
+<!-- 	<bean id = "transactionManager" class = "org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
 	
-	<tx:annotation-driven transaction-manager="transactionManager"/>
+	<tx:annotation-driven transaction-manager="transactionManager"/> -->
   	
   	<!-- gmail -->
     <bean id="mailSender" class ="org.springframework.mail.javamail.JavaMailSenderImpl" >

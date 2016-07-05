@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.stop">
+	
+<select id="selectStopList" parameterType="com.project.util.Pagination" resultType="Stop">
+	select
+		h.*
+	from
+	(
+		select 
+			ROWNUM r, t.* 
+		from 
+		(
+			select 
+				ROWNUM rn, e.* 
+			from 
+			(
+				select
+					s.member_id as sMemberId,
+					b.member_id as wMemberId,
+					s.stop_title as stopTitle,
+					s.stop_reason as stopReason,
+					s.stop_no as stopNo,
+					b.board_no as boardNo,
+					b.category_no as categoryNo,
+					b.board_title as boardTitle,
+					b.menu_no as menuNo
+				from
+					board b,
+					stop s
+				where
+					b.board_no = s.board_no 
+				order by stop_no
+			) e order by rn desc
+		)t
+	)h 
+	where r between #{start} and #{end}
+</select>
+
+
+
+<select id="selectReportCount"  resultType="int">
+	select 
+		count(*) 
+	from 
+		stop 
+</select>
+
+<insert id="insertReport" parameterType="Stop">
+	insert into stop(
+			stop_no			     ,
+			category_no		 	 ,
+			menu_no				 ,
+			board_no		     ,
+			stop_title 		     ,
+			stop_reason	 	     ,
+			member_id
+	)
+	values
+	(
+			seq_stop_stop_no.nextval,
+			#{categoryNo, jdbcType=INTEGER},
+			#{menuNo, jdbcType=INTEGER},
+			#{boardNo, jdbcType=INTEGER},
+			#{stopTitle, jdbcType=VARCHAR},
+			#{stopReason, jdbcType=VARCHAR},
+			#{sMemberId, jdbcType=VARCHAR}
+	)
+</insert>
+
+</mapper>

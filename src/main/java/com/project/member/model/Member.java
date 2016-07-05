@@ -11,8 +11,10 @@ public class Member{
 	private int memberMasterPoint;
 	private int memberReportpoint;
 	private int memberStopPoint;
+	private int rn;
 	private String memberFlag;
 	private String authority;
+	private String memberHireDate;
 	private String memberLastLogin;
 	
 	public int getMemberNo() {
@@ -75,11 +77,23 @@ public class Member{
 	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
+	public String getMemberHireDate() {
+		return memberHireDate;
+	}
+	public void setMemberHireDate(String memberHireDate) {
+		this.memberHireDate = memberHireDate;
+	}
 	public String getMemberLastLogin() {
 		return memberLastLogin;
 	}
 	public void setMemberLastLogin(String memberLastLogin) {
 		this.memberLastLogin = memberLastLogin;
+	}
+	public int getRn() {
+		return rn;
+	}
+	public void setRn(int rn) {
+		this.rn = rn;
 	}
 	
 }

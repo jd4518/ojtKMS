@@ -1,9 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="sitemesh" tagdir="/WEB-INF/tags/sitemesh" %>    
 <html lang="ko" data-ng-app="projectApp">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><sitemesh:write property='title'/></title>
 <%@ include file="/WEB-INF/view/include/common.jsp"%>
+<%
+	request.setCharacterEncoding("utf-8");
+%>
 <sitemesh:write property='head'/>
 <script type="text/javascript">
 
@@ -44,7 +49,7 @@ setInterval("displaytime()", 1000)
 
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
-     <sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ADMIN')">
+     <sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ADMIN','ROLE_MANAGER')">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
@@ -62,7 +67,7 @@ setInterval("displaytime()", 1000)
              	<sec:authorize access="hasRole('ROLE_ANONYMOUS')">
                 <li><a href="/Project/member/memberMain.do#/login"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Log In</a></li>
                 </sec:authorize>
-                <sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ADMIN')">
+                <sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ADMIN','ROLE_MANAGER')">
                 <li>
 		      <a href="${pageContext.request.contextPath}/logout.do"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Log Out</a>
 		      </li>
@@ -89,8 +94,8 @@ setInterval("displaytime()", 1000)
                     <br>
                 </li>
                 <li class="sidebar-brand">
-                    <a href="#" class="navbar-brand" style="font-weight: bold;">
-                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Profile
+                    <a href="/Project/board/boardMain.do#/memberInfo" class="navbar-brand" style="font-weight: bold;">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 내 정보
                     </a>
                 </li>
                 <li>
@@ -118,15 +123,14 @@ setInterval("displaytime()", 1000)
                     <div data-ng-show="n3" data-ng-repeat="x in menu.cateogry"> <a href="/Project/board/boardMain.do#/boardList/{{x.CATEGORY_NO}}{{menu.menu[2].MENU_NO}}" data-ng-show="{{x.MENU_NO==menu.menu[2].MENU_NO}}" style="color:#fff;  padding-left: 25px;"> <span  class="glyphicon glyphicon-tasks" ></span> {{x.CATEGORY_NAME}}</a></div>
                     </div>
                 </li>
-             <!--    <li>
-                    <a href="#"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Programming</a>
+                <sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_MANAGER')">
+                <li>
+                <a style="font-weight: bold;" href="/Project/admin/adminMain.do#/memberList"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 회원목록</a>
                 </li>
                 <li>
-                    <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Q & A</a>
+                <a style="font-weight: bold;" href="/Project/admin/adminMain.do#/reportList"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 신고페이지</a>
                 </li>
-              	<li>
-                    <a href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Messages</a>
-                </li> -->
+                </sec:authorize>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->

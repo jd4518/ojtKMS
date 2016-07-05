@@ -3,17 +3,4 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.admin">
 
-<select id="selectAdminListAll" resultType="Admin">
-	select
-		a.admin_no, 
-		m.member_no, 
-		m.member_name
-	from
-		admin a,
-		member m 
-	where
-		a.member_no = m.member=no
-		order by a.admin_no
-</select>
-
 </mapper>

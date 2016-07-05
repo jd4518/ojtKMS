@@ -55,7 +55,6 @@
 			</div>
 
 		</div>
-<input type="file" class="file" name="fileinput" id="fileinput">
 	</div>
 
 </body>

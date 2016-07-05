@@ -2,8 +2,37 @@
 app.config(function ($routeProvider) {
 	$routeProvider.when('/bMain',{
 		templateUrl:'bMain.do',
+		controller: "bMainCtrl"
 	});
 });
+
+app.controller('bMainCtrl', function($scope, $http, $location, $routeParams){
+	$scope.selectRecent = function(){
+		var ajax = $http.get("/Project/board/selectRecent.do",{
+		});
+		ajax.then(function(value) {
+			$scope.recent = value.data;
+		}, function(reason) {
+			$scope.join = reason.data;
+			alert("error");
+		});
+	}
+	
+	$scope.selectRecent();
+	$scope.selectRecommand = function(){
+		var ajax = $http.get("/Project/board/selectTopRecommand.do",{
+			
+		});
+		ajax.then(function(value) {
+			$scope.topRecommand = value.data;
+		}, function(reason) {
+			$scope.join = reason.data;
+			alert("error");
+		});
+	}
+	$scope.selectRecommand();
+});
+
 
 app.controller('boardMainCtrl', function($scope, $http, $location, $routeParams) {
 	$scope.menu={};
@@ -72,8 +101,6 @@ app.controller('boardMainCtrl', function($scope, $http, $location, $routeParams)
 		}
 		
 	}
-	
-	
 	
 });
 

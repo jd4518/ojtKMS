@@ -5,7 +5,6 @@
 <head>
 <script type="text/javascript" src="/Project/framework/js/fileinput.js"></script>
 <link rel="stylesheet" href="/Project/framework/css/fileinput.css" />
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>

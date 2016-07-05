@@ -8,6 +8,7 @@ public class Files {
 	private int boardNo;
 	private int categoryNo;
 	private int menuNo;
+	private int stopNo;
 	public int getFileNo() {
 		return fileNo;
 	}
@@ -44,6 +45,12 @@ public class Files {
 	}
 	public void setMenuNo(int menuNo) {
 		this.menuNo = menuNo;
+	}
+	public int getStopNo() {
+		return stopNo;
+	}
+	public void setStopNo(int stopNo) {
+		this.stopNo = stopNo;
 	}
 	
 	

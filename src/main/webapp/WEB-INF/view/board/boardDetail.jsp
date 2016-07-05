@@ -32,6 +32,9 @@
       		href="/Project/board/fileDown.do?fileRealName={{f.FILES_REALNAME}}&fileFakeName={{f.FILES_FAKENAME}}">{{f.FILES_REALNAME}}
       		<input type="hidden" data-ng-model="fileNa" ></a></div>
       		</td>
+      		<th colspan="4">
+      		<div align="right" class="col-lg-12"><a href="/Project/board/boardMain.do#/reportInsert/{{mNo}}/{{cNo}}/{{bNo}}" class="btn" style="color:red; background-color: #fff;" ><i class="fa fa-bell" aria-hidden="true"></i>신고하기</a></div>
+      		</th>
       	</tr>
       </thead>
       <tbody class="btable">

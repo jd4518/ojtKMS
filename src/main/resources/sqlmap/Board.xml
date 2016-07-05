@@ -42,6 +42,7 @@
 					b.category_no = #{categoryNo}
 				and
 					b.board_flag  = 'Y'
+				order by b.board_no
 			) e order by rn desc
 		)t
 	)h 
@@ -180,4 +181,94 @@
 	)
 
 </insert>
+
+<select id="selectRecentBoard" resultType="Board">
+	select
+		h.*
+	from
+	(
+		select 
+			ROWNUM r, t.* 
+		from 
+		(
+			select 
+				ROWNUM rn, e.* 
+			from 
+			(
+				select
+					b.board_no as boardNo,
+					b.menu_no  as menuNo,
+					b.category_no as categoryNo,
+					b.board_title as boardTitle,
+					b.board_content as boardContent,
+					b.board_complete as boardComplete,
+					b.board_hit as boardHit,
+					b.board_regdate as boardRegdate,
+					b.board_flag as boardFlag,
+					b.member_id as memberId,
+					b.board_recommand as boardRecommandPoint,
+					m.member_name as memberName,
+					c.category_name as categoryName
+				from
+					board b,
+					member m,
+					category c
+				where
+					b.member_id = m.member_id
+				and
+					b.category_no = c.category_no
+				and
+					b.board_flag  = 'Y'
+					order by b.board_regdate desc
+			) e
+		)t
+	)h 
+	where r between 1 and 5
+		
+
+</select>
+
+<select id="selectTopRecommandBoard" resultType="Board">
+	select
+		h.*
+	from
+	(
+		select 
+			ROWNUM r, t.* 
+		from 
+		(
+			select 
+				ROWNUM rn, e.* 
+			from 
+			(
+				select
+					b.board_no as boardNo,
+					b.menu_no  as menuNo,
+					b.category_no as categoryNo,
+					b.board_title as boardTitle,
+					b.board_content as boardContent,
+					b.board_complete as boardComplete,
+					b.board_hit as boardHit,
+					b.board_regdate as boardRegdate,
+					b.board_flag as boardFlag,
+					b.member_id as memberId,
+					b.board_recommand as boardRecommandPoint,
+					m.member_name as memberName,
+					c.category_name as categoryName
+				from
+					board b,
+					member m,
+					category c
+				where
+					b.member_id = m.member_id
+				and
+					b.category_no = c.category_no
+				and
+					b.board_flag  = 'Y'
+					order by b.board_recommand desc, b.board_no desc
+			)e
+		)t
+	)h 
+	where r between 1 and 5
+</select>
 </mapper>

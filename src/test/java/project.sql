@@ -47,6 +47,9 @@ create table stop(
 	stop_reason 		varchar2(50),
 	constraint stop_member_no foreign key(member_id) references member(member_id) on delete cascade
 )
+select * from stop
+
+alter table stop add stop_start_date date
 create sequence seq_stop_stop_no
 
 create table board(
@@ -104,6 +107,7 @@ create table files(
 )
 alter table files add constraint fk_files_board foreign key (board_no,category_no,menu_no) 
 			references board(board_no,category_no,menu_no) on delete cascade
+alter table files add stop_no number(22)
 create sequence seq_files_files_no
 
 create table reply(
@@ -124,17 +128,16 @@ alter table reply add constraint fk_reply_board foreign key (board_no,category_n
 create sequence seq_reply_reply_no
 drop sequence seq_reply_reply_no
 
-create table accuser(
-	accuser_no			number(22) primary key not null,
-	accuser_content		varchar2(1500) not null,
-	board_no			number(22),
-	category_no			number(22),
-	menu_no 		    number(22),
-	stop_no				number(22),
-	member_id			varchar2(12),
-	user_no				number(22),
-	constraint accuser_stop_no foreign key(stop_no) references stop(stop_no) on delete cascade
+create table accused(
+	accused_no			number(22) primary key not null,
+	member_id			varchar2(12) not null,
+	stop_start_date 	date 		not null,
+	stop_end_date 		date 		not null
 )
+alter table accused add accused_flag varchar2(12) default 'Y' not null
+create sequence seq_accused_accused_no
+alter table accused add	constraint	accused_member_id foreign key(member_id) references member(member_id) on delete cascade
+drop table accuser
 alter table accuser add constraint fk_accuser_board foreign key (board_no,category_no,menu_no)
 			references board(board_no,category_no,menu_no) on delete cascade
 create sequence seq_accuser_accuser_no
@@ -234,14 +237,13 @@ select
 				b.board_complete,
 				b.board_regdate,
 				b.board_flag,
-				b.member_no,
 				m.member_id,
 				m.member_name
 			from
 				board b,
 				member m
 			where
-				b.member_no = m.member_no
+				b.member_id = m.member_id
 			and
 				b.category_no = 2
 		) e order by rn desc
@@ -306,4 +308,158 @@ select
 		
 		select * from files
 		select * from reply
+		select * from member
+			update
+		member
+	set
+		authority = 'ROLE_USER'
+	where
+		member_id = '1234'
+		alter table member rename column member_last_login to member_hire_date
+		alter table member add member_last_login date
+update member set
+	member_last_login = sysdate
+	
+	update member set
+		authority = 'ROLE_ADMIN'
+	where member_id = 'nohaff'
+	select * from files
+	
+		select 
+		files_no,
+		menu_no,
+		category_no,
+		board_no,
+		files_realname,
+		files_fakename
+	from
+		files
+	where
+		category_no = 2
+	and
+		board_no = 130
+	and 
+		stop_no = NULL
+		
+			select
+		h.*
+	from
+	(
+		select 
+			ROWNUM r, t.* 
+		from 
+		(
+			select 
+				ROWNUM rn, e.* 
+			from 
+			(
+				select
+					s.member_id as sMemberId,
+					b.member_id as wMemberId,
+					s.stop_title as stopTitle,
+					s.stop_reason as stopReason,
+					s.stop_no as stopNo,
+					b.board_no as boardNo,
+					b.category_no as categoryNo,
+					b.board_title as boardTitle,
+					b.menu_no as menuNo
+				from
+					board b,
+					stop s
+				where
+					b.board_no = s.board_no 
+			) e order by rn desc
+		)t
+	)h 
+	where r between 1 and 10
+	
+	select
+		count(*)
+	from
+		accused
+	where
+		member_id = 'nohaff'
+		select * from accused
+		select * from member order by member_no
+		update ACCUSED
+		set accused_flag = 'Y'
+		update member
+		set authority = 'ROLE_STOP'
+		where member_id = 'aa'
+		select * from files
+		where stop_no is not null
+		select * from board order by board_recommand desc, board_no desc
+		
+		select
+		h.*
+	from
+	(
+		select 
+			ROWNUM r, t.* 
+		from 
+		(
+			select 
+				ROWNUM rn, e.* 
+			from 
+			(
+				select
+					s.member_id as sMemberId,
+					b.member_id as wMemberId,
+					s.stop_title as stopTitle,
+					s.stop_reason as stopReason,
+					s.stop_no as stopNo,
+					b.board_no as boardNo,
+					b.category_no as categoryNo,
+					b.board_title as boardTitle,
+					b.menu_no as menuNo
+				from
+					board b,
+					stop s
+				where
+					b.board_no = s.board_no 
+				order by stop_no
+			) e order by rn desc
+		)t
+	)h 
+	where r between 1 and 10
+	
+	select
+		h.*
+	from
+	(
+		select 
+			ROWNUM r, t.* 
+		from 
+		(
+			select 
+				ROWNUM rn, e.* 
+			from 
+			(
+				select
+					b.board_no as boardNo,
+					b.menu_no  as menuNo,
+					b.category_no as categoryNo,
+					b.board_title as boardTitle,
+					b.board_content as boardContent,
+					b.board_complete as boardComplete,
+					b.board_hit as boardHit,
+					b.board_regdate as boardRegdate,
+					b.board_flag as boardFlag,
+					b.member_id as memberId,
+					b.board_recommand as boardRecommandPoint,
+					c.category_name as categoryName
+				from
+					board b,
+					category c
+				where
+					b.category_no = c.category_no
+				and
+					b.board_flag  = 'Y'
+					order by b.board_recommand desc, b.board_no desc
+			) e 
+		)t
+	where rn between 1 and 5
+	)h 
+	select * from board
+	select b.*,c.category_name from board b , category c where b.category_no=c.category_no order by b.board_regdate desc
 commit

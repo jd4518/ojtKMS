@@ -14,6 +14,21 @@
 	<logger name="com.project.member">
 		<level value="info" />
 	</logger>
+	<logger name="com.project.files">
+		<level value="info" />
+	</logger>
+	<logger name="com.project.menu">
+		<level value="info" />
+	</logger>
+	<logger name="com.project.stop">
+		<level value="info" />
+	</logger>
+	<logger name="com.project.admin">
+		<level value="info" />
+	</logger>
+	<logger name="com.project.email">
+		<level value="info" />
+	</logger>
 		<logger name="org.springframework">
 		<level value="info" />
 	</logger>

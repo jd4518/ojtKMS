@@ -3,5 +3,6 @@
    <mapping  path="/main.*"  exclude="true"/>
    <mapping  path="/member/memberMain.*" decorator="/decorators/topMenu.jsp"/>
    <mapping  path="/board/boardMain.*" decorator="/decorators/topMenu.jsp"/>
+   <mapping  path="/admin/adminMain.*" decorator="/decorators/topMenu.jsp"/>
    
    </sitemesh>

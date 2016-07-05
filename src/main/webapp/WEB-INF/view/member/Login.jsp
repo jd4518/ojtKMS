@@ -5,7 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Login</title>
-<script type="text/javascript" src="/Project/js/test.js"></script>
 </head>
 <body onload="document.loginfrm.loginId.focus();">
 <article class="container">
