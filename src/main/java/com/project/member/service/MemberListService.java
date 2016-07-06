@@ -13,7 +13,7 @@ import com.project.board.model.Board;
 import com.project.comment.model.Comment;
 import com.project.member.dao.MemberDao;
 import com.project.member.model.Member;
-import com.project.util.Pagination;
+import com.project.util.service.Pagination;
 
 @Service
 public class MemberListService {

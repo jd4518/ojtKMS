@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.member.dao.MemberDao;
 import com.project.member.model.Member;
-import com.project.util.FileUtil;
+import com.project.util.service.FileUtil;
 
 @Service
 public class MemberRanPwService {

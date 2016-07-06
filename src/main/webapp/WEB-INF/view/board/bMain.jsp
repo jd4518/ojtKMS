@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>B I T</title>
 </head>
-<body>
+<body >
 	<div class="container clearfix">
 		<div class="row">
 			<div class="col-md-6 col-sm-12">

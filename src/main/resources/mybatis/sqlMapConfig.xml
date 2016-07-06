@@ -13,6 +13,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="Member" type="com.project.member.model.Member"/>
 		<typeAlias alias="Menu" type="com.project.menu.model.Menu"/>
 		<typeAlias alias="Stop" type="com.project.stop.model.Stop"/>
+		<typeAlias alias="Pagination" type="com.project.util.service.Pagination"/>
 	</typeAliases>
 </configuration>
 

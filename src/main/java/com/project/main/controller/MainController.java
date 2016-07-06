@@ -35,10 +35,4 @@ public class MainController {
 	    return "/main";
 	}
 	
-	/*@RequestMapping(value="/api/fileupload.do", method=RequestMethod.POST)
-	public void fileupload (HttpServletRequest request, HttpServletResponse response) {
-		MultipartHttpServletRequest mu = (MultipartHttpServletRequest) request;
-		
-		System.out.println(mu.getFile("file").toString());
-	}*/
 }

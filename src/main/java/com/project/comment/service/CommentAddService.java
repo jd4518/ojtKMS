@@ -14,7 +14,7 @@ import com.project.comment.model.Comment;
 @Service
 public class CommentAddService {
 
-static Log log = LogFactory.getLog(BoardListService.class);
+static Log log = LogFactory.getLog(CommentAddService.class);
 	
 	@Autowired
 	private CommentDao commentDao;

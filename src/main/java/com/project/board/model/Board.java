@@ -1,6 +1,6 @@
 package com.project.board.model;
 
-import com.project.util.Pagination;
+import com.project.util.service.Pagination;
 
 public class Board {
 	

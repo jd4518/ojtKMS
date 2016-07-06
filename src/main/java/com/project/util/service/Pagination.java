@@ -1,4 +1,4 @@
-package com.project.util;
+package com.project.util.service;
 
 public class Pagination {
 

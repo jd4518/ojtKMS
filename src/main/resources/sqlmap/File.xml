@@ -61,7 +61,7 @@
 	and
 		board_no = #{boardNo, jdbcType=INTEGER}
 	and 
-		stop_no = NULL
+		stop_no is null
 </select>
 
 <select id="selectReportFileList" parameterType="int" resultType="Files">

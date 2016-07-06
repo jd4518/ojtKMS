@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.project.board.model.Board;
 import com.project.comment.model.Comment;
-import com.project.util.Pagination;
+import com.project.util.service.Pagination;
 
 @Repository
 public class BoardDao {

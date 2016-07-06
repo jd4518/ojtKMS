@@ -10,12 +10,12 @@ import org.springframework.stereotype.Repository;
 
 import com.project.member.controller.MemberController;
 import com.project.member.model.Member;
-import com.project.util.Pagination;
+import com.project.util.service.Pagination;
 
 @Repository
 public class MemberDao {
 	
-	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+	private static final Logger logger = LoggerFactory.getLogger(MemberDao.class);
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;

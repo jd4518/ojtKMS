@@ -15,7 +15,7 @@ import com.project.member.dao.MemberDao;
 @Service
 public class MemberSaveService {
 
-	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
+	private static final Logger logger = LoggerFactory.getLogger(MemberSaveService.class);
 	@Autowired
 	private MemberDao memberDao;
 	

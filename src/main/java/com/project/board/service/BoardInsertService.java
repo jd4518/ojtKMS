@@ -1,8 +1,6 @@
 package com.project.board.service;
 
-import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,7 +13,7 @@ import com.project.board.dao.BoardDao;
 import com.project.board.model.Board;
 import com.project.file.dao.FileDao;
 import com.project.file.model.Files;
-import com.project.util.FileUpload;
+import com.project.util.service.FileUpload;
 
 @Service
 public class BoardInsertService {

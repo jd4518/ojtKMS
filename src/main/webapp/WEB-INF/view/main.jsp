@@ -5,8 +5,6 @@
 <head>
 <%@ include file="/WEB-INF/view/include/common.jsp"%>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
 <title>Main.jsp</title>
 </head>
 <body>
@@ -15,7 +13,6 @@
 
 
 	<!-- Header -->
-	<a name="about"></a>
 	<div class="intro-header">
 		<div class="container">
 

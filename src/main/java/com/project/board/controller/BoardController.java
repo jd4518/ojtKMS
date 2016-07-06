@@ -39,7 +39,7 @@ import com.project.file.model.Files;
 import com.project.menu.service.MenuService;
 import com.project.stop.model.Stop;
 import com.project.stop.service.StopInsertService;
-import com.project.util.FileDownload;
+import com.project.util.service.FileDownload;
 
 @Controller
 @RequestMapping(value = "/board")
@@ -276,7 +276,7 @@ public class BoardController {
 	@RequestMapping(value="/boardHit.do",method=RequestMethod.PUT)
 	@ResponseBody
 	public void boardHit(@RequestBody Board board){
-		boardHitService.increaseBoard(board);
+		boardHitService.updateIncreaseHitBoard(board);
 		
 	}
 	

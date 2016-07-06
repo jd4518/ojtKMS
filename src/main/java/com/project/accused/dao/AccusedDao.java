@@ -17,7 +17,7 @@ public class AccusedDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
+	private static final Logger logger = LoggerFactory.getLogger(AccusedDao.class);
 	
 	public int selectAccused(String memberId){
 		int result = sqlSession.selectOne("com.project.accused.selectAccused", memberId);

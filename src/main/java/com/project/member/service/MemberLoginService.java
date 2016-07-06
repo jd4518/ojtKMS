@@ -26,7 +26,7 @@ import com.project.member.model.MemberDetail;
 
 @Service("memberLoginService")
 public class MemberLoginService implements UserDetailsService{
-	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+	private static final Logger logger = LoggerFactory.getLogger(MemberLoginService.class);
 	
 	@Autowired
 	private MemberDao memberDao;
@@ -44,21 +44,12 @@ public class MemberLoginService implements UserDetailsService{
 	         
 	         String userPassword = new String(member.getMemberPassword());
 			
-	         //암호화된 값을 가지고있음
-	         //System.out.println(":: dbPassword => "+dbPassword);
-	         
-	         //복호화
-	         //passwordEncoding passwordEncoding = new passwordEncoding();
-	         
-	         //String password = passwordEncoding.decode(userPassword);
-	         //System.out.println(":: password => "+password);
 	         
 	         List<GrantedAuthority> list = new ArrayList<GrantedAuthority>();
 	         
 	         String [] roles = member.getAuthority().split(",");
 	         
 	         for(String role : roles){
-	            //System.out.println(":: role => "+role);
 	            list.add(new SimpleGrantedAuthority(role));
 	         
 	         }
@@ -69,7 +60,6 @@ public class MemberLoginService implements UserDetailsService{
 	         System.out.println(":: => userDetails.toString() = "+userDetails.toString()+" , userDetails = "+userDetails);
 	         
 	      } catch (Exception e) {
-	         // TODO Auto-generated catch block
 	         e.printStackTrace();
 	      }
 	      System.out.println(userDetails.toString());

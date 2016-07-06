@@ -15,8 +15,8 @@ import com.project.file.dao.FileDao;
 import com.project.file.model.Files;
 import com.project.stop.dao.StopDao;
 import com.project.stop.model.Stop;
-import com.project.util.FileUpload;
-import com.project.util.Pagination;
+import com.project.util.service.FileUpload;
+import com.project.util.service.Pagination;
 
 @Service
 public class StopSelectListService {

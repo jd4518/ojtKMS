@@ -33,7 +33,9 @@
       		<input type="hidden" data-ng-model="fileNa" ></a></div>
       		</td>
       		<th colspan="4">
+      		<div data-ng-show="cNo!=1">
       		<div align="right" class="col-lg-12"><a href="/Project/board/boardMain.do#/reportInsert/{{mNo}}/{{cNo}}/{{bNo}}" class="btn" style="color:red; background-color: #fff;" ><i class="fa fa-bell" aria-hidden="true"></i>신고하기</a></div>
+      		</div>
       		</th>
       	</tr>
       </thead>
@@ -59,6 +61,9 @@
 			 </td>
 			 <td >
 			 	<div align="right" class="col-lg-12" data-ng-show="${member.memberId }==c.MEMBER_ID"><a   data-ng-click="replyDelete(c.REPLY_NO)" class="btn btn-warning">삭제</a></div>
+			 	<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_MANAGER')">
+			 	<div align="right" class="col-lg-12" ><a   data-ng-click="replyDelete(c.REPLY_NO)" class="btn btn-warning">삭제</a></div>
+	</sec:authorize>
 			 </td>
          </tr>
 
@@ -66,7 +71,7 @@
       </tbody>
    </table>
 </div>
-<sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ADMIN')">
+<sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ADMIN','ROLE_MANAGER')">
 <div  class="form-group" >
 	<label  class="col-lg-2 cLabel">댓글입력</label>
 	   <div  class="col-lg-7">
@@ -91,6 +96,13 @@
 	<a href="#/boardModify/{{board.boardNo}}{{board.categoryNo}}" class="btn btn-warning">수정</a>
 	<a href="#/boardDelete/{{board.boardNo}}{{board.categoryNo}}{{mNo}}" class="btn btn-danger">삭제</a>
 	</span>
+	
+	<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_MANAGER')">
+	<span data-ng-show="cNo==1">
+	<a href="#/boardModify/{{board.boardNo}}{{board.categoryNo}}" class="btn btn-warning">수정</a>
+	</span>
+	<a href="#/boardDelete/{{board.boardNo}}{{board.categoryNo}}{{mNo}}" class="btn btn-danger">삭제</a>
+	</sec:authorize>
 	</div>
 	</td>
 	</tr>

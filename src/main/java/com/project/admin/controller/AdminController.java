@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.project.board.controller.BoardController;
-import com.project.board.model.Board;
 import com.project.email.model.Email;
 import com.project.email.service.EmailSenderService;
 import com.project.member.model.Member;
@@ -81,7 +79,7 @@ public class AdminController {
 	 @RequestMapping(value="/reportGet/{pageNo:[0-9]+}x.do",method=RequestMethod.GET)
 	   @ResponseBody
 	   public Map<String, Object> getReport(@PathVariable int pageNo) throws Exception{
-	      System.out.println("page"+pageNo);
+	      logger.debug("getReport pageNo : "+pageNo);
 	      
 	      Map<String, Object> map = stopSelectListService.selectReportList(pageNo);
 	      
@@ -91,7 +89,7 @@ public class AdminController {
 	 @RequestMapping(value="/memberGet/{pageNo:[0-9]+}x.do",method=RequestMethod.GET)
 	   @ResponseBody
 	   public Map<String, Object> getMember(@PathVariable int pageNo) throws Exception{
-	      System.out.println("page"+pageNo);
+		 logger.debug("getMember pageNo : "+pageNo);
 	      
 	      Map<String, Object> map = memberListService.getMemberList(pageNo);
 	      

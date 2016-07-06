@@ -113,7 +113,7 @@ values
 			
 </update>
 
-<select id="selectMemberList" parameterType="com.project.util.Pagination" resultType="Member">
+<select id="selectMemberList" parameterType="Pagination" resultType="Member">
 select
 		h.*
 	from

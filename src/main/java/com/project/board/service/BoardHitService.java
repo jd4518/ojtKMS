@@ -14,7 +14,7 @@ public class BoardHitService {
 	@Autowired
 	private BoardDao boardDao;
 	
-	public void increaseBoard(Board board){
+	public void updateIncreaseHitBoard(Board board){
 		
 		boardDao.increaseHit(board);
 	}

@@ -14,7 +14,7 @@ import com.project.member.model.Member;
 @Service
 public class MemberStopService {
 
-	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
+	private static final Logger logger = LoggerFactory.getLogger(MemberStopService.class);
 	
 	@Autowired
 	private MemberDao memberDao;

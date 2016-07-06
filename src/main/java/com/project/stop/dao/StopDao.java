@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.project.stop.model.Stop;
-import com.project.util.Pagination;
+import com.project.util.service.Pagination;
 
 @Repository
 public class StopDao {
