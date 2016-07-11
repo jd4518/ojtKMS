@@ -30,7 +30,6 @@ public class MemberWarningService {
 		}else{
 			memberDao.memberWarningThree(memberId);
 			memberDao.memberStop(memberId);
-			System.out.println("하하");
 			int r = memberDao.selectSpoint(memberId);
 			Member member = new Member();
 			member.setMemberId(memberId);

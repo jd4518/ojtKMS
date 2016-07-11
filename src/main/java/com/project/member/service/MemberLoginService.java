@@ -36,7 +36,6 @@ public class MemberLoginService implements UserDetailsService{
 	
 	public UserDetails loadUserByUsername(String userId)
 	         throws UsernameNotFoundException {
-	      System.out.println(":: => loadUserByUsername() start ...");
 	      UserDetails userDetails = null;
 	      
 	      try {
@@ -57,13 +56,10 @@ public class MemberLoginService implements UserDetailsService{
 	         
 	         userDetails =  new User(userId, userPassword, list);
 	         
-	         System.out.println(":: => userDetails.toString() = "+userDetails.toString()+" , userDetails = "+userDetails);
 	         
 	      } catch (Exception e) {
 	         e.printStackTrace();
 	      }
-	      System.out.println(userDetails.toString());
-	      System.out.println(":: => loadUserByUsername() end ...");
 	      
 	      
 	      return userDetails;

@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.project.board.model.Board;
 import com.project.comment.model.Comment;
@@ -35,7 +36,8 @@ public class BoardDao {
 		return sqlSession.selectOne("com.project.board.selectBoardCount", categoryNo);
 	}
 	
-	public void insertBoard(Board board){
+	@Transactional
+	public void insertBoard(Board board) throws Exception{
 		sqlSession.insert("com.project.board.insertBoard", board);
 	}
 	

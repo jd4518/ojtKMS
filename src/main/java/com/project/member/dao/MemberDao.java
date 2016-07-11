@@ -37,12 +37,7 @@ public class MemberDao {
 	public Member selectMemberDetail(String memberName){
 		logger.info("sMd start");
 		logger.info(memberName);
-		System.out.println(memberName);
-		System.out.println("pwcheck ========== :" + memberName);
 		Member  member = sqlSession.selectOne("com.project.member.memberDetailSelect", memberName);
-		System.out.println(member.getMemberId());
-		System.out.println(member.getMemberPassword());
-		System.out.println(member.getAuthority());
 		return member;
 	}
 	

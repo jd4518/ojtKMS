@@ -41,7 +41,6 @@ public class FileUpload {
 	    */
 	   public List<Files> fileUploads(HttpServletRequest request, String filePath) throws IllegalStateException, IOException, Exception{
 	      
-	      System.out.println(":: => fileUploads() start ...");
 	      MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest) request;
 	      List<MultipartFile> fileList = multipartHttpServletRequest.getFiles("originalFileName"); //originalFileName => input="file" 의 name
 	      
@@ -54,7 +53,6 @@ public class FileUpload {
 	      String storedFileName = null;
 	      
 	      //String filePath = application.getRealPath("/upload");
-	      System.out.println(":: filePath => "+filePath);
 	      
 	      File file = new File(filePath);
 	        if(file.exists() == false){
@@ -68,11 +66,6 @@ public class FileUpload {
 	            
 	            files = new Files();
 	            
-	            System.out.println("------------- file start -------------");
-	            System.out.println("fileName : "+multipartFile.getOriginalFilename());
-	            System.out.println("size : "+multipartFile.getSize());
-	            System.out.println("-------------- file end --------------\n");
-	            
 	            originalFileName = multipartFile.getOriginalFilename();
 	            originalFileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
 	            storedFileName = FileUtil.getRandomString()+originalFileExtension;
@@ -80,8 +73,6 @@ public class FileUpload {
 	            /*files.setFileSize(multipartFile.getSize());*/
 	            files.setFileRealName(originalFileName);
 	            files.setFileFakeName(storedFileName);
-	            System.out.println(":: => originalFileName = "+originalFileName);
-	            System.out.println(":: => fileInfo = "+files);
 	            
 	            
 	            file = new File(filePath+ File.separator +storedFileName);            
@@ -91,9 +82,6 @@ public class FileUpload {
 	         }
 	         
 	        }
-	        System.out.println(":: => fileInfoList.size = "+filesList.size());
-	        System.out.println(":: => fileInfoList = "+filesList);
-	        System.out.println(":: => fileUploads() end ...");
 	      return filesList;
 	   }
 

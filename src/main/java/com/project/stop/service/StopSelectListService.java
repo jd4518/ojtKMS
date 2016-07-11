@@ -46,7 +46,6 @@ public class StopSelectListService {
 		List<Files> files = null;
 		List<Files> f = new ArrayList<Files>();
 		for(int i =0; i<stop.size();i++){
-			System.out.println(stop.get(i).getStopNo());
 		
 			files = fileDao.selectReportFileList(stop.get(i).getStopNo());
 			f.addAll(files);

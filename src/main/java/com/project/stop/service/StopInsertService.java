@@ -35,8 +35,6 @@ public class StopInsertService {
 	
 	
 	public void insertReport(Stop stop,HttpServletRequest request) throws Exception{
-		System.out.println(stop.getMenuNo());
-		System.out.println(stop.getCategoryNo());
 		
 		stopDao.insertReport(stop);
 		String filePath = request.getSession().getServletContext().getRealPath("/rFileUpload");
@@ -48,9 +46,6 @@ public class StopInsertService {
 				   files.setMenuNo(stop.getMenuNo());
 				   files.setCategoryNo(stop.getCategoryNo());
 				   files.setBoardNo(stop.getBoardNo());
-				   System.out.println(files.getBoardNo());
-				   System.out.println(files.getCategoryNo());
-				   System.out.println(files.getFileFakeName());
 				   fileDao.insertReportFile(files);
 			   }
 		   }

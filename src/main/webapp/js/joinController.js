@@ -9,9 +9,7 @@ app.config(function($routeProvider) {
 app.controller('joinCtrl', function($scope, $http, $location) {
 	$scope.join = {};
 	$scope.memberId = {};
-	$scope.cl = function() {
-		location.href = "/Project/main.do";
-	}
+	
 
 	$scope.submit = function() {
 		var ajax = $http.post("/Project/member/member.do", {
@@ -21,13 +19,22 @@ app.controller('joinCtrl', function($scope, $http, $location) {
 			memberPassword : $scope.join.memberPassword
 		});
 		ajax.then(function(value) {
-			location.href = "/Project/board/boardMain.do#/bMain";
+			location.href = "/Project/member/memberMain.do#/login";
 		}, function(reason) {
 			$scope.join = reason.data;
 			alert("error"+join);
 			location.href = "/Project/main.do";
 		});
 	}
+	
+	
+	$scope.cl = function() {
+		location.href = "/Project/main.do";
+	}
+	
+	
+	
+	
 	$scope.a = false;
 	$scope.b = false;
 	$scope.checkId = function(){

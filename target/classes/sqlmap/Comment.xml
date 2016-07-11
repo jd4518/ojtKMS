@@ -55,6 +55,8 @@
 		 category_no = #{categoryNo, jdbcType=INTEGER}
 	and
 		 board_no = #{boardNo, jdbcType=INTEGER}
+	and 
+		 reply_flag = 'Y'
 </select>
 
 <update id="deleteComment" parameterType="Comment">

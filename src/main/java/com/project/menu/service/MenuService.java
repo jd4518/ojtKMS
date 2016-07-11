@@ -26,15 +26,12 @@ public class MenuService {
 	private CategoryDao categoryDao;
 	
 	public Map<String, Object> getMenu(){
-		System.out.println("select menu start");
-		System.out.println("select cate start");
 		
 		List<Menu> menu =  menuDao.getMenu();
 		List<Category> category = categoryDao.getCategory();
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("menu", menu);
 		map.put("cateogry", category);
-		System.out.println("select menu end");
 		return map;
 	}
 

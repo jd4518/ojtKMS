@@ -55,7 +55,7 @@ public class BoardController {
 	
 	@Autowired
 	BoardListService boardService;
-	
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 	@Autowired
 	BoardMainService boardMainService;
 	
@@ -166,7 +166,6 @@ public class BoardController {
 	@RequestMapping(value = "/menu.do", method = RequestMethod.GET)
 	@ResponseBody
 	public Map<String, Object> getMenu() {
-		 System.out.println("menu");
 		Map<String, Object> map = menuService.getMenu();
 
 		return map;
@@ -176,8 +175,6 @@ public class BoardController {
 	  @RequestMapping(value="/boardGet/{categoryNo:[0-9]+}{pageNo:[0-9]+}x.do",method=RequestMethod.GET)
 	   @ResponseBody
 	   public Map<String, Object> getBoard(@PathVariable int categoryNo,@PathVariable int pageNo){
-	      System.out.println("catecon"+categoryNo);
-	      System.out.println("page"+pageNo);
 	      Map<String, Object> map = boardService.getBoardList(categoryNo,pageNo);
 	      
 	      return map;
@@ -228,9 +225,7 @@ public class BoardController {
 
 		String originalFile = fileRealName;
 		String storedFile 	= fileFakeName;
-		System.out.println(originalFile);
-		System.out.println(storedFile);
-		String filePath = request.getSession().getServletContext().getRealPath("/rfileUpload");
+		String filePath = request.getSession().getServletContext().getRealPath("/fileUpload");
 		fileDownload.downloadFiles(originalFile, storedFile, filePath, response, request);
 		
 	}
@@ -242,9 +237,7 @@ public class BoardController {
 
 		String originalFile = fileRealName;
 		String storedFile 	= fileFakeName;
-		System.out.println(originalFile);
-		System.out.println(storedFile);
-		String filePath = request.getSession().getServletContext().getRealPath("/fileUpload");
+		String filePath = request.getSession().getServletContext().getRealPath("/rfileUpload");
 		fileDownload.downloadFiles(originalFile, storedFile, filePath, response, request);
 		
 	}
@@ -253,10 +246,6 @@ public class BoardController {
 	@ResponseBody
 	public void boardUpdate(@RequestBody Board board){
 		
-		System.out.println(board.getBoardContent());
-		System.out.println(board.getCategoryNo());
-		System.out.println(board.getMemberId());
-		System.out.println(board.getCategoryNo());
 		
 		boardModifyService.updateBoard(board);
 	}
@@ -265,10 +254,6 @@ public class BoardController {
 	@ResponseBody
 	public void boardDelete(@RequestBody Board board){
 		
-		System.out.println(board.getBoardContent());
-		System.out.println(board.getCategoryNo());
-		System.out.println(board.getMemberId());
-		System.out.println(board.getCategoryNo());
 		
 		boardDeleteService.deleteBoard(board);
 	}
@@ -297,8 +282,6 @@ public class BoardController {
 	
 	@RequestMapping(value="/reportWrite.do")
 	public ModelAndView reportWrite(@ModelAttribute("stop")  Stop stop, HttpServletRequest request) throws Exception{
-			System.out.println(stop.getBoardNo());
-			System.out.println(stop.getsMemberId());
 			 stopInsertService.insertReport(stop, request);
 			  String viewName = "redirect:/board/boardMain.do#/boardList/"+stop.getCategoryNo()+stop.getMenuNo();
 		      

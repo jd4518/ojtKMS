@@ -59,11 +59,9 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 			Date last = accused.getStopEndDate();
 			
 				if(date.getTime()>=last.getTime()){
-					System.out.println("gagsdgagafasdfasfsadf");
 				Member mem = new Member();
 				mem.setMemberId(id);
 				mem.setAuthority("ROLE_USER");
-				System.out.println("gagsdgagafasdfasfsadf");
 				memberdao.updateAuthority(mem);
 				accusedDao.saveStopMember(id);
 				Map<String, Object> map = new HashMap<String, Object>();
@@ -72,7 +70,6 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 				memberdao.memberLastLogin(id);
 				Member member=memberdao.selectMemberDetail(id);
 				session.setAttribute("member", member);
-				System.out.println("gagsdgagafasdfasfsadf");
 				response.sendRedirect(request.getContextPath() + "/stop/endStop.do");
 			}else{
 				session.setAttribute("accused", accused);

@@ -17,7 +17,12 @@
         <property name="maxInMemorySize" value="100000000" />
 	</bean>
 
-
+ <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean id="logAspect" class="com.project.aspect.LogAspact"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
 <mvc:default-servlet-handler/>
 
 <context:component-scan base-package="com.*"/>

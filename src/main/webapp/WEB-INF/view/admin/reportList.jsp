@@ -47,12 +47,12 @@ td {
             <td><div data-ng-repeat = "f in list.files"><a class="aTag" data-ng-if="f.stopNo==b.stopNo"
       		href="/Project/board/reportFileDown.do?fileRealName={{f.fileRealName}}&fileFakeName={{f.fileFakeName}}">{{f.fileRealName}}
       		<input type="hidden" data-ng-model="fileNa" ></a></div></td>
-            <td>{{b.wMemberId}}</td>
-            <td>{{b.sMemberId}}</td>
+            <td style="color:red; font-weight: bold;">{{b.wMemberId}}</td>
+            <td style="color:blue; font-weight: bold;">{{b.sMemberId}}</td>
             <td>
             <sec:authorize access="hasRole('ROLE_ADMIN')">
             <input type="button" class="btn btn-warning" value="경고" data-ng-click="memberWarning(b.wMemberId)">
-            <input type="button" class="btn btn-danger" value="영구" data-ng-click="memberStop(b.wMemberId)">
+            <input type="button" class="btn btn-danger" value="정지" data-ng-click="memberStop(b.wMemberId)">
             </sec:authorize>         
             </td>
             <td>

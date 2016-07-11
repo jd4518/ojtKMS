@@ -61,9 +61,11 @@ td {
 									<td style="padding-top: 45px">{{member.memberHireDate}}</td>
 									<td style="padding-top: 45px">{{member.memberLastLogin}}</td>
 									<td style="padding-top: 45px">{{member.memberStopPoint}}</td>
-									<td style="padding-top: 45px"><div data-ng-if="member.authority=='ROLE_USER'">사용자</div>
-									<div data-ng-if="member.authority=='ROLE_ADMIN'">운영자</div>
-									<div data-ng-if="member.authority=='ROLE_MANAGER'">매니저</div></td>
+									<td style="padding-top: 45px"><div data-ng-if="member.authority=='ROLE_USER'" >사용자</div>
+									<div data-ng-if="member.authority=='ROLE_ADMIN'" style="font-weight: bold;">운영자</div>
+									<div data-ng-if="member.authority=='ROLE_MANAGER'" style="font-weight: bold;">매니저</div>
+									<div data-ng-if="member.authority=='ROLE_STOP'" style="color:red;">정지중</div>
+									</td>
 									
 									<td style="padding-top: 38px">
 									<sec:authorize access="hasRole('ROLE_ADMIN')">

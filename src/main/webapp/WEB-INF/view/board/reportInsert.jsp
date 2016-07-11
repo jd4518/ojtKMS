@@ -36,7 +36,6 @@
 	         <td colspan="2">
 				         <div class="form-group">
 			      <div class="col-lg-10 col-lg-offset-2">
-					     <label class="control-label">Select File</label>
 						<input  name="originalFileName" type="file" class="file" multiple data-show-upload="false" data-show-caption="true">
 			      </div>
 			    </div>

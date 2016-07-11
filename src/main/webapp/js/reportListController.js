@@ -62,7 +62,7 @@ app.controller('reportListCtrl',function($scope, $http, $routeParams){
 			}
         }
         $scope.memberStop = function(memberId){
-        	if(confirm("영구 정지를 하시겠습니까???")){
+        	if(confirm("정지를 하시겠습니까???")){
         	var ajax = $http.put("/Project/admin/memberStop.do",{
 				memberId : memberId
 			});

@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <html>
+<%
+	request.setCharacterEncoding("utf-8");
+%>
 <head>
 <script type="text/javascript" src="/Project/framework/js/fileinput.js"></script>
 <link rel="stylesheet" href="/Project/framework/css/fileinput.css" />
@@ -34,7 +37,6 @@
 	         <td colspan="2">
 				         <div class="form-group">
 			      <div class="col-lg-10 col-lg-offset-2">
-					     <label class="control-label">Select File</label>
 						<input  name="originalFileName" type="file" class="file" multiple data-show-upload="false" data-show-caption="true">
 			      </div>
 			    </div>

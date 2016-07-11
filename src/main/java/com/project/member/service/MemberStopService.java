@@ -23,22 +23,19 @@ public class MemberStopService {
 	private AccusedDao accusedDao;
 	
 	public void memberStop(String memberId){
-		System.out.println("!!!!!!!!!!!!!!!!!!"+memberId);
 		memberDao.memberStop(memberId);
 		int result = memberDao.selectSpoint(memberId);
-		Member member = new Member();
-		member.setMemberId(memberId);
-		member.setAuthority("ROLE_STOP");
 		if(result <= 1){
+			Member member = new Member();
+			member.setMemberId(memberId);
+			member.setAuthority("ROLE_STOP");
 			accusedDao.oneStopMember(memberId);
 			memberDao.updateAuthority(member);
 			
 		}else if(result == 2){
 			accusedDao.twoStopMember(memberId);
-			memberDao.updateAuthority(member);
 		}else{
 			accusedDao.allStopMember(memberId);
-			memberDao.updateAuthority(member);
 		}
 	}
 

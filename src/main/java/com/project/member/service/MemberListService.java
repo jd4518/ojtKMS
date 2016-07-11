@@ -28,7 +28,6 @@ public class MemberListService {
 		Pagination page = new Pagination();
 		page.setPageNo(pageNo);
 		page.setTotalItem(memberDao.memberTotalCount());
-		System.out.println(pageNo);
 		List<Member> member = memberDao.selectMemberList(page);
 		
 		

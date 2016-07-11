@@ -19,10 +19,8 @@ public class CategoryService {
 	private CategoryDao categoryDao;
 	
 	public List<Category> getCategory(int i){
-		System.out.println("select cate start");
 		
 		List<Category> category =  categoryDao.getCategory();
-		System.out.println("select cate end");
 		return category;
 	}
 

@@ -31,8 +31,6 @@ public class BoardInsertService {
 	
 	
 	public void insertBoard(Board board,HttpServletRequest request) throws Exception{
-		System.out.println(board.getMenuNo());
-		System.out.println(board.getCategoryNo());
 		
 		boardDao.insertBoard(board);
 		String filePath = request.getSession().getServletContext().getRealPath("/fileUpload");
@@ -43,9 +41,6 @@ public class BoardInsertService {
 				   files = filesList.get(i);
 				   files.setMenuNo(board.getMenuNo());
 				   files.setCategoryNo(board.getCategoryNo());
-				   System.out.println(files.getBoardNo());
-				   System.out.println(files.getCategoryNo());
-				   System.out.println(files.getFileFakeName());
 				   fileDao.insertFile(files);
 			   }
 		   }

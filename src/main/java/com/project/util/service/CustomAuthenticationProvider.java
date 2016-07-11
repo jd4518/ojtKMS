@@ -45,10 +45,6 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 		
 		logger.info("Welcome authenticate! {}", user_id + "/" + user_pw);
 		
-		
-		// check whether user's credentials are valid.
-		// if false, throw new BadCredentialsException(messages.getMessage("AbstractUserDetailsAuthenticationProvider.badCredentials", "Bad credentials"));
-		
 		Boolean pMatch = bcryptPasswordEncoder.matches(user_pw, member.getMemberPassword());
 		if(pMatch){
 		List<GrantedAuthority> roles = new ArrayList<GrantedAuthority>();

@@ -35,7 +35,6 @@ public class MemberInfoUpService {
 	
 	public int memberPwCheck(Member member){
 		int result = 0;
-		System.out.println("pwcheck ========== :" + member.getMemberId());
 		Member cMember = memberDao.selectMemberDetail(member.getMemberId());
 		Boolean pMatch = bcryptPasswordEncoder.matches(member.getMemberPassword(), cMember.getMemberPassword());
 		if(pMatch){

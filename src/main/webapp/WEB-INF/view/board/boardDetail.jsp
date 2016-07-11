@@ -34,7 +34,8 @@
       		</td>
       		<th colspan="4">
       		<div data-ng-show="cNo!=1">
-      		<div align="right" class="col-lg-12"><a href="/Project/board/boardMain.do#/reportInsert/{{mNo}}/{{cNo}}/{{bNo}}" class="btn" style="color:red; background-color: #fff;" ><i class="fa fa-bell" aria-hidden="true"></i>신고하기</a></div>
+      		<div align="right" class="col-lg-12" data-ng-show="board.memberId!='${member.memberId }'">
+      		<a href="/Project/board/boardMain.do#/reportInsert/{{mNo}}/{{cNo}}/{{bNo}}" class="btn" style="color:red; background-color: #fff;" ><i class="fa fa-bell" aria-hidden="true"></i>신고하기</a></div>
       		</div>
       		</th>
       	</tr>
@@ -60,7 +61,11 @@
 				  </div>
 			 </td>
 			 <td >
-			 	<div align="right" class="col-lg-12" data-ng-show="${member.memberId }==c.MEMBER_ID"><a   data-ng-click="replyDelete(c.REPLY_NO)" class="btn btn-warning">삭제</a></div>
+			 <sec:authorize access="hasRole('ROLE_USER')">
+			 	<div align="right" class="col-lg-12" data-ng-show="'${member.memberId }'==c.MEMBER_ID">
+			 	<a   data-ng-click="replyDelete(c.REPLY_NO)" class="btn btn-warning">삭제</a>
+			 	</div>
+			 </sec:authorize>
 			 	<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_MANAGER')">
 			 	<div align="right" class="col-lg-12" ><a   data-ng-click="replyDelete(c.REPLY_NO)" class="btn btn-warning">삭제</a></div>
 	</sec:authorize>
@@ -84,7 +89,7 @@
 	   <div class="help-block with-errors">
 	   <div class="col-lg-3" align="right"><a   data-ng-click="reply('${member.memberId}')" class="btn btn-primary"  
 	   data-ng-disabled="detailForm.content.$invalid">입력</a>
-	    <a class="custom btn-custom" data-ng-click="recommand('${member.memberId}')"
+	    <a data-ng-show="board.memberId!='${member.memberId }'" class="custom btn-custom" data-ng-click="recommand('${member.memberId}')"
 	   >좋아요 <i class="fa fa-heart"  aria-hidden="true"> ({{board.boardRecommandPoint}})</i></a></div>
 	</div>
 	</div>
@@ -94,7 +99,9 @@
 	<div align="right"><input name="button" type="button" data-ng-click="list()" class="btn btn-success" value="목록" >
 	<span data-ng-show="checkId('${member.memberId }')">
 	<a href="#/boardModify/{{board.boardNo}}{{board.categoryNo}}" class="btn btn-warning">수정</a>
+	<sec:authorize access="hasRole('ROLE_USER')">
 	<a href="#/boardDelete/{{board.boardNo}}{{board.categoryNo}}{{mNo}}" class="btn btn-danger">삭제</a>
+	</sec:authorize>
 	</span>
 	
 	<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_MANAGER')">

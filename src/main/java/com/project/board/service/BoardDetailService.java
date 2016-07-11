@@ -17,13 +17,11 @@ public class BoardDetailService {
 	private BoardDao boardDao;
 	
 	public Board getBoardDetail(int boardNo, int categoryNo){
-		System.out.println("select boarddetail start");
 		Board board = new Board();
 		board.setBoardNo(boardNo);
 		board.setCategoryNo(categoryNo);
 		Board b = boardDao.selectBoardDetail(board);
 		
-		System.out.println("select board detail end");
 		return b;
 	}
 

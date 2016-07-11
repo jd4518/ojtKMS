@@ -12,7 +12,7 @@ create table member(
 )
 alter table member add authority VARCHAR(20) default 'ROLE_USER' NOT NULL
 create sequence seq_member_member_no
-select * from cat
+select * from stop
 drop table board;
 drop table files
 drop table menu;
@@ -105,6 +105,9 @@ create table files(
 	board_no 		number(22) 		not null,
 	category_no	number(22)		 not null
 )
+
+select * from accused
+delete from accused where accused_no = 61
 alter table files add constraint fk_files_board foreign key (board_no,category_no,menu_no) 
 			references board(board_no,category_no,menu_no) on delete cascade
 alter table files add stop_no number(22)
@@ -460,6 +463,23 @@ update member set
 		)t
 	where rn between 1 and 5
 	)h 
-	select * from board
+	select * from files where stop_no is null
 	select b.*,c.category_name from board b , category c where b.category_no=c.category_no order by b.board_regdate desc
+	select 
+		files_no,
+		menu_no,
+		category_no,
+		board_no,
+		files_realname,
+		files_fakename
+	from
+		files
+	where
+		category_no = 2
+	and
+		board_no = 141
+	and 
+		stop_no is null
+		
+		select * from member
 commit

@@ -160,6 +160,8 @@ select
 		count(*)
 	from
 		member
+	where 
+		member_flag = 'Y'
 </select>
 
 <update id="memberDelete" parameterType="String">

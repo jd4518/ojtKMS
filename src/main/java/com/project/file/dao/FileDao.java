@@ -15,10 +15,6 @@ public class FileDao {
 	private SqlSessionTemplate sqlSession;
 	
 	public void insertFile(Files files){
-		  System.out.println(files.getBoardNo()+"우랄라랄");
-		   System.out.println(files.getCategoryNo()+"우랄라랄");
-		   System.out.println(files.getFileFakeName()+"우랄라랄");
-		   System.out.println(files.getFileRealName()+"리얼");
 		sqlSession.insert("com.project.file.insertFile",files);
 	}
 	

@@ -23,12 +23,10 @@ public class BoardListService {
 	private BoardDao boardDao;
 	
 	public Map<String, Object> getBoardList(int categoryNo,int pageNo){
-		System.out.println("select board start");
 		Pagination page = new Pagination();
 		page.setPageNo(pageNo);
 		page.setTotalItem(boardDao.selectBoardCount(categoryNo));
 		page.setCategoryNo(categoryNo);
-		System.out.println(pageNo);
 		List<Board> board = boardDao.selectBoardList(page);
 		
 		Comment comment = new Comment();
@@ -42,7 +40,6 @@ public class BoardListService {
 		
 		map.put("board", board);
 		map.put("page", page);
-		System.out.println("select board end");
 		return map;
 	}
 

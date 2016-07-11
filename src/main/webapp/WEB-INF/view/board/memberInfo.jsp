@@ -22,25 +22,28 @@
   <div align="center">
     <h2>회원정보</h2>
     </div>
+   <form data-ng-submit="memberInfoUpdate('${member.memberId }')">
    <div>
+
    	<h3 style="font-weight: bold;">아이디</h3>
       <input type="text" id="id"  name="id"  value="${member.memberId }" style="border: 0px; font-weight: bold;" readonly="readonly"/>
    </div>
    <div>
     <h3 style="font-weight: bold;">이름</h3>
-      <input type="text" id="name"  name="name" data-ng-model="memberName"  placeholder="${member.memberName }" />
+      <input type="text" id="name"  name="name" data-ng-model="memberName"  placeholder="${member.memberName }" required="required"/>
       </div>
       <div>
       <h3 style="font-weight: bold;">이메일</h3>
-      <input type="text" id="email"  name="email" data-ng-model="memberEmail" placeholder="${member.memberEmail }"/>
+      <input type="text" id="email"  name="email" data-ng-model="memberEmail" placeholder="${member.memberEmail }" required="required"/>
       </div>
       <div>
       <h3 style="font-weight: bold;">비밀번호</h3>
-      <input type="password" id="password"  name="password" data-ng-model="memberPassword" />
+      <input type="password" id="password"  name="password" data-ng-model="memberPassword"  required="required"/>
       </div>
-      <button  data-ng-click="memberInfoUpdate(${member.memberId })">수정</button>
+      <button type="submit" >수정</button>
       
       <button  data-ng-click="back()" style="margin-top: 10px;">취소</button>
+      </form>
   </div>
 
   <div class="cta"><a onclick="memberPwUp('${member.memberId }');" class="aTag" >비밀번호 변경하기</a></div>

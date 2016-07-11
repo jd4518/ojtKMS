@@ -21,6 +21,7 @@ public class MemberJoinService {
 	
 	public void add(Member member){
 		try{
+			
 			member.setMemberPassword(this.bcryptPasswordEncoder.encode(member.getMemberPassword()));
 			memberDao.memberAdd(member);
 			

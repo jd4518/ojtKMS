@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -44,7 +45,12 @@
             </div> 
             </td>
            <td colspan="2">
-            <span>
+                    <span data-ng-if="categoryNo==1">
+           <sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_MANAGER')">
+   <a href="#/boardInsert/{{categoryNo}}{{menuNo}}" class="btn btn-primary">게시글등록</a>
+           </sec:authorize>
+   </span>
+            <span data-ng-if="categoryNo!=1">
    <a href="#/boardInsert/{{categoryNo}}{{menuNo}}" class="btn btn-primary">게시글등록</a>
    </span>
             </td>

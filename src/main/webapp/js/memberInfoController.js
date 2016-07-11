@@ -22,7 +22,7 @@ app.controller('memberInfoCtrl', function($scope, $http, $location) {
 			$scope.result = value.data;
 			if($scope.result!=0){
 				alert("수정성공");
-			location.href="/boardMain.do#/bMain";
+			location.href="/Project/board/boardMain.do#/bMain";
 			}else{
 				alert("비밀번호가 틀렸습니다.");
 			}

@@ -53,11 +53,11 @@
    <tx:advice id="txAdvice" transaction-manager="transactionManager">
       <tx:attributes>
          <!-- update 으로 시작된는 Method에 적용 transaction 규칙 -->            
-         <tx:method    name="get*"    read-only="true"      propagation="REQUIRED"/>
+         <tx:method    name="*get*"    read-only="true"      propagation="REQUIRED"/>
          <!-- insert 으로 시작된는 Method에 적용 transaction 규칙 -->      
-         <tx:method   name="insert*"          propagation="REQUIRED"/>
-         <tx:method   name="delete*"   propagation="REQUIRED"/>
-         <tx:method   name="update*"   propagation="REQUIRED"/>
+         <tx:method   name="*insert*"          propagation="REQUIRED"/>
+         <tx:method   name="*delete*"   propagation="REQUIRED"/>
+         <tx:method   name="*update*"   propagation="REQUIRED"/>
          <!--모든 Method에 적용 transaction 규칙 -->      
          <!-- <tx:method   name="*"    />-->   
       </tx:attributes>
@@ -65,8 +65,8 @@
    
    <!-- AOP : pointcut / advisor 설정 -->
    <aop:config>
-      <aop:pointcut    id="requiredTx"
-                           expression="execution(public * com.project.*.service.*(..) )" />
+      <aop:pointcut    id="requiredTx" 
+                           expression="execution(public * com.project.*.service.*(..) )"  />
       <aop:advisor    advice-ref="txAdvice"  pointcut-ref="requiredTx"  />
    </aop:config>
    
@@ -91,5 +91,5 @@
                
             </props>
         </property>
-   </bean>
+   	</bean>
 </beans>
